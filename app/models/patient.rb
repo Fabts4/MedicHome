@@ -3,4 +3,9 @@ class Patient < User
 
   has_many :prescriptions
   has_many :prescription_items, through: :prescriptions
+
+  validates :ssn, presence: true
+  validates :mutuelle_name, presence: true
+  validates :mutuelle_number, presence: true
+
 end
