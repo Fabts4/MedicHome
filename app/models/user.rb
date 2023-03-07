@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :prescriptions
+  has_many :prescriptions, dependent: :destroy
   has_many :prescription_items, through: :prescriptions
   has_one_attached :photo
 
@@ -11,6 +11,5 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :address, presence: true
-  validates :doctor, presence: true
 
 end
