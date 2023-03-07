@@ -6,6 +6,7 @@ filepath = "storage/items.csv"
 CSV.foreach(filepath, headers: :first_row) do |row|
   Item.create(name: row[0], desc: row[1], administration: row[2], price: 0)
 end
+Item.all
 
 doc_knock = Doctor.create!(email: 'docknock@gmail.com', encrypted_password: 'azerty', first_name: 'Docteur', last_name: 'Knock', address: '3 rue le Goff', ssn: '14701126747696', mutuelle_name:'Lidl', mutuelle_number: '0000836439', rpps: '17459398274', doctor: true )
 doc_oc = Doctor.create!(email: 'dococ@gmail.com', encrypted_password: 'azerty', first_name: 'Docteur', last_name: 'Oc', address: '12 avenue de la Grande Armée', ssn: '17723066749696', mutuelle_name:'Osborne.Corp', mutuelle_number: '0000572942', rpps: '18153865409', doctor: true )
