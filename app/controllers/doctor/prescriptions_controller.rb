@@ -1,5 +1,6 @@
 class PrescriptionsController < ApplicationController
   def index
+    @prescriptions = Prescription.where(doctor: current_user)
   end
 
   def show
