@@ -4,5 +4,5 @@ class Doctor < User
   has_many :prescriptions
   has_many :prescription_items, through: :prescriptions
 
-  validates :rpps, presence: true
+  # validates :rpps, presence: true
 end

@@ -1,4 +1,4 @@
-class PrescriptionItemsController < ApplicationController
+class Doctor::PrescriptionItemsController < ApplicationController
   def create
   end
 
