@@ -1,4 +1,4 @@
-class PrescriptionsController < ApplicationController
+class Doctor::PrescriptionsController < ApplicationController
   def index
     @prescriptions = Prescription.where(doctor: current_user)
   end
