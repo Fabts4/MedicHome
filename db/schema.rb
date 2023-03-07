@@ -10,15 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_06_150258) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_07_132912) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "baskets", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.integer "final_price"
+    t.bigint "prescription_id", null: false
+    t.bigint "pharmacy_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pharmacy_id"], name: "index_baskets_on_pharmacy_id"
+    t.index ["prescription_id"], name: "index_baskets_on_prescription_id"
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "desc"
     t.integer "price"
     t.boolean "drug", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "basket_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["basket_id"], name: "index_orders_on_basket_id"
+    t.index ["item_id"], name: "index_orders_on_item_id"
+  end
+
+  create_table "pharmacies", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,6 +92,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_150258) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "baskets", "pharmacies"
+  add_foreign_key "baskets", "prescriptions"
+  add_foreign_key "orders", "baskets"
+  add_foreign_key "orders", "items"
   add_foreign_key "prescription_items", "items"
   add_foreign_key "prescription_items", "prescriptions"
   add_foreign_key "prescriptions", "users", column: "doctor_id"
