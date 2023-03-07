@@ -5,5 +5,9 @@ class Prescription < ApplicationRecord
   has_many :baskets, dependent: :destroy
   has_many :items, through: :prescription_items
 
-
+  enum status: {
+    draft: 0,
+    sent: 1,
+    ordered: 2
+  }
 end
