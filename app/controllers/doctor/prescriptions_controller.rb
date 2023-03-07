@@ -1,4 +1,4 @@
-class PrescriptionsController < ApplicationController
+class Doctor::PrescriptionsController < ApplicationController
   def index
   end
 

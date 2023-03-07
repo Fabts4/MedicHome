@@ -8,9 +8,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :address, presence: true
-  validates :doctor, presence: true
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
+  # validates :address, presence: true
 
 end
