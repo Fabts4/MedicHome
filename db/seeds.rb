@@ -49,6 +49,12 @@ pharmacy_8 = Pharmacy.create!(name: 'Pharmapop', address: '4 rue Cail, Paris')
 pharmacy_9 = Pharmacy.create!(name: 'Pharmol', address: '1 rue Caillou Mérard, Paris')
 pharmacy_10 = Pharmacy.create!(name: 'Pharniente', address: '4 boulevard des Italiens, Paris')
 
+
+prescription_item_1 = PrescriptionItem.create!(prescription_id: prescription_1.id, posology: "blabla 1", item_id: Item.find_by(name: 'ABRAXANE 5 mg/ml').id)
+prescription_item_2 = PrescriptionItem.create!(prescription_id: prescription_7.id, posology: "blabla 2", item_id: Item.find_by(name: "ABILIFY 15 mg").id)
+prescription_item_3 = PrescriptionItem.create!(prescription_id: prescription_5.id, posology: "blabla 3", item_id: Item.find_by(name: "ABIES NIGRA BOIRON").id)
+
+
 item_1 = Item.create!(name: 'Doliprane 1000mg', desc: 'comprimé', administration: 'orale', price: 3, drug: false)
 doliprane = URI.open('https://www.soin-et-nature.com/7446-menu_default/doliprane-1-000mg-comprimes-8.jpg')
 item_1.photo.attach(io: doliprane, filename: "doliprane.jpg", content_type: "image/jpg")

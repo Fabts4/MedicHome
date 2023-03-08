@@ -1,9 +1,11 @@
 class Doctor::PrescriptionsController < ApplicationController
   def index
     @prescription = Prescription.new
+    @prescriptions = Prescription.where(doctor: current_user)
   end
 
   def show
+    @prescription = Prescription.where(doctor: current_user, id: params[:id])
   end
 
   def edit

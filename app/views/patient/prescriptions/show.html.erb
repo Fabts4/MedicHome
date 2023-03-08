@@ -1,2 +1,6 @@
 <h1>Prescriptions#show</h1>
 <p>Find me in app/views/prescriptions/show.html.erb</p>
+
+<p>Voici l'object correspond <%= @prescription %> et son id <strong><%= params[:id] %></p></strong>
+
+<p><%= link_to "Voir les pharmas", prescription_pharmacies_path(params[:id])%></p>
