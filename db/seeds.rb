@@ -16,8 +16,11 @@ end
 doc_knock = Doctor.create!(email: 'docknock@gmail.com', password: 'azerty', first_name: 'Docteur', last_name: 'Knock', address: '3 rue le Goff', ssn: '14701126747696', mutuelle_name:'Lidl', mutuelle_number: '0000836439', rpps: '17459398274', doctor: true )
 raoult = Doctor.create!(email: 'raoult@gmail.com', password: 'azerty', first_name: 'Docteur', last_name: 'Raoult', address: '12 avenue de la Grande Armée', ssn: '17723066749696', mutuelle_name:'Osborne.Corp', mutuelle_number: '0000572942', rpps: '18153865409', doctor: true )
 
-michel = Patient.create!(email: 'michel@gmail.com', password: 'azerty', first_name: 'Michel', last_name: 'Berger', address: '42 boulevard Raspail', ssn: '17723066749696', mutuelle_name:'Mutuelle', mutuelle_number: '0000572942', rpps: '', doctor: false )
+fabien = Patient.create!(email: 'fabien@gmail.com', password: 'azerty', first_name: 'Fabien', last_name: 'Marsaud', address: '42 boulevard Raspail', ssn: '17723066749696', mutuelle_name:'Mutuelle', mutuelle_number: '0000572942', rpps: '', doctor: false )
 georges = Patient.create!(email: 'bernard@gmail.com', password: 'azerty', first_name: 'Georges', last_name: 'Moustaki', address: '76 rue de Vaugirard', ssn: '17723066749696', mutuelle_name:'Mutuelle', mutuelle_number: '0000572942', rpps: '', doctor: false )
+
+fabien_photo = URI.open('https://upload.wikimedia.org/wikipedia/commons/3/38/Grand_Corps_Malade_D%C3%A9jeuner_C%C3%A9sar_2018.jpg')
+fabien.photo.attach(io: fabien_photo, filename: "Fabien.jpg", content_type: "image/jpg")
 
 doc_knock_photo = URI.open('https://philitt.fr/wp-content/uploads/2013/10/18865759-9ef1b.jpg')
 doc_knock.photo.attach(io: doc_knock_photo, filename: "DocKnock.jpg", content_type: "image/jpg")
@@ -25,12 +28,12 @@ doc_knock.photo.attach(io: doc_knock_photo, filename: "DocKnock.jpg", content_ty
 raoult_photo = URI.open('https://cloudfront-eu-central-1.images.arcpublishing.com/leparisien/553ZIG5WSBDW5HNQ2FN4TOENLY.jpg')
 raoult.photo.attach(io: raoult_photo, filename: "DocOc.jpg", content_type: "image/jpg")
 
-prescription_1 = Prescription.create!(date: '06/03/2023', status: 2, doctor_id: doc_knock.id, patient_id: michel.id)
-prescription_2 = Prescription.create!(date: '14/01/2022', status: 2, doctor_id: doc_knock.id, patient_id: michel.id)
-prescription_3 = Prescription.create!(date: '30/08/2021', status: 2, doctor_id: doc_knock.id, patient_id: michel.id)
-prescription_4 = Prescription.create!(date: '22/01/2020', status: 2, doctor_id: doc_knock.id, patient_id: michel.id)
-prescription_5 = Prescription.create!(date: '28/02/2018', status: 2, doctor_id: doc_knock.id, patient_id: michel.id)
-prescription_6 = Prescription.create!(date: '12/07/2022', status: 2, doctor_id: doc_knock.id, patient_id: michel.id)
+prescription_1 = Prescription.create!(date: '06/03/2023', status: 2, doctor_id: doc_knock.id, patient_id: fabien.id)
+prescription_2 = Prescription.create!(date: '14/01/2022', status: 2, doctor_id: doc_knock.id, patient_id: fabien.id)
+prescription_3 = Prescription.create!(date: '30/08/2021', status: 2, doctor_id: doc_knock.id, patient_id: fabien.id)
+prescription_4 = Prescription.create!(date: '22/01/2020', status: 2, doctor_id: doc_knock.id, patient_id: fabien.id)
+prescription_5 = Prescription.create!(date: '28/02/2018', status: 2, doctor_id: doc_knock.id, patient_id: fabien.id)
+prescription_6 = Prescription.create!(date: '12/07/2022', status: 2, doctor_id: doc_knock.id, patient_id: fabien.id)
 prescription_7 = Prescription.create!(date: '14/07/2018', status: 2, doctor_id: raoult.id, patient_id: georges.id)
 prescription_8 = Prescription.create!(date: '31/05/2020', status: 2, doctor_id: raoult.id, patient_id: georges.id)
 prescription_9 = Prescription.create!(date: '30/11/2019', status: 2, doctor_id: raoult.id, patient_id: georges.id)
