@@ -1,5 +1,7 @@
 
+<%# <%= render "shared/navbar-doctor" %> %>
+
 <h1>Pages#home</h1>
-<p>hello</p>
+<p>hello <%=current_user.first_name%><% current_user.last_name%></p>
 
-
+<%= link_to "voir les prescription", patient_prescriptions_path %>
