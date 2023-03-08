@@ -8,6 +8,15 @@
     </button>
 </div>
 
+<% @prescriptions.each do |prescription|  %>
+<ul>
+<li><%= prescription.date %></li>
+<li><%= prescription.doctor_id %></li>
+<li><%= prescription.patient_id %></li>
+<li><%= prescription.status %></li>
+<li><%= link_to "Voir le detail",  doctor_prescription_path(prescription) %></li>
+</ul>
+<% end %>
 
 <!-- Modal -->
 <div class="modal-global modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
