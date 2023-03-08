@@ -38,6 +38,10 @@ prescription_10 = Prescription.create!(date: '15/09/2022', status: 0, doctor_id:
 prescription_11 = Prescription.create!(date: '25/12/2020', status: 0, doctor_id: raoult.id, patient_id: georges.id)
 prescription_12 = Prescription.create!(date: '11/04/2013', status: 0, doctor_id: raoult.id, patient_id: georges.id)
 
+prescription_item_1 = PrescriptionItem.create!(prescription_id: prescription_1.id, posology: "blabla 1", item_id: Item.find_by(name: 'ABRAXANE 5 mg/ml').id)
+prescription_item_2 = PrescriptionItem.create!(prescription_id: prescription_7.id, posology: "blabla 2", item_id: Item.find_by(name: "ABILIFY 15 mg").id)
+prescription_item_3 = PrescriptionItem.create!(prescription_id: prescription_5.id, posology: "blabla 3", item_id: Item.find_by(name: "ABIES NIGRA BOIRON").id)
+
 pharmacy_1 = Pharmacy.create!(name: 'PharmacisileS', address: '16 villa Gaudelet')
 pharmacy_2 = Pharmacy.create!(name: 'Pharmatop', address: '48 boulevard Raspail ')
 pharmacy_3 = Pharmacy.create!(name: 'Pharmapastop', address: '2 rue Malebranche')
