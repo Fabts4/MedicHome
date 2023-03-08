@@ -17,7 +17,7 @@ class Doctor::PrescriptionsController < ApplicationController
   end
 
   def create
-    if params[:patient_id].nil?
+    if prescription_params[:patient_id].empty?
       @prescription = Prescription.new
       render 'doctor/prescriptions/index', status: :unprocessable_entity
     else
