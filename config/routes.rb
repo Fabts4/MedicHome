@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers =>{:sessions => "users/sessions"}
   root to: "pages#home"
+  get "/doctor_home", to: "pages#doctor_home"
+  get "/patient_home", to: "pages#patient_home"
 
   namespace :doctor do
     resources :prescriptions, only: [:index, :show, :create, :edit, :update] do
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   resources :baskets, only: [:create, :update] do
     resources :orders, only: [:create, :update, :destroy]
   end
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end
