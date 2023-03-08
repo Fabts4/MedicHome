@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :prescriptions
+  has_many :prescriptions, dependent: :destroy
   has_many :prescription_items, through: :prescriptions
   has_one_attached :photo
 
