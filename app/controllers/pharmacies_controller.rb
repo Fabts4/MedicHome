@@ -1,5 +1,6 @@
 class PharmaciesController < ApplicationController
   before_action :set_prescription
+
   def index
     @pharmacies = Pharmacy.all
     @markers = @pharmacies.geocoded.map do |pharmacy|
@@ -13,6 +14,8 @@ class PharmaciesController < ApplicationController
 
   def show
     @pharmacy = Pharmacy.find(params[:id])
+    @basket = Basket.find_or_create_by(pharmacy_id: @pharmacy.id, prescription_id: @prescription.id)
+    @item = Item.all
   end
 
   private
