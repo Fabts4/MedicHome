@@ -21,6 +21,7 @@ class Doctor::PrescriptionsController < ApplicationController
   def create
     if prescription_params[:patient_id].empty?
       @prescription = Prescription.new
+      @prescriptions = Prescription.where(doctor: current_user)
       render 'doctor/prescriptions/index', status: :unprocessable_entity
     else
       @prescription = Prescription.find_or_create_by(prescription_params.merge(doctor: current_user))

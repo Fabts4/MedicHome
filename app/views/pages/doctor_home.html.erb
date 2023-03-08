@@ -1,27 +1,30 @@
 <h1> Bienvenue sur MedicHome</h1>
 <div class="parent-flexbox">
-    <button class= "boutton-carré" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <p>fdfdf </p>
+    <button class= "boutton-carré" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserChoiceModal">
+        <p>Nouvelle Ordonnance</p>
     </button>
+    <%= link_to  doctor_prescriptions_path do %>
     <button class= "boutton-carré">
-        <p>fdfdf </p>
+        <p>Mes ordonnances </p>
     </button>
+    <% end %>
+
 </div>
 
 
 <!-- Modal -->
-<div class="modal-global modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="UserChoiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Sélectionner le patient:</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Choisir un patient</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Search bar à coder
-      </div>
-      <div class="modal-footer">
-        <a href="#"class="btn-modal">Choisir</a>
+        <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
+          <%= f.input :patient_id, collection: Patient.simple_form_collection %>
+          <%= f.submit 'Commencer', class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>
