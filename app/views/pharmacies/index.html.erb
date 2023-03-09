@@ -1,2 +1,16 @@
 <h1>Pharmacies#index</h1>
 <p>Find me in app/views/pharmacies/index.html.erb</p>
+
+<div style="width: 600px; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+
+<h1>List of Pharmacies</h1>
+<ul>
+  <% @pharmacies.each do |pharmacy| %>
+    <li><%= link_to pharmacy.name, prescription_pharmacy_path(@prescription, pharmacy) %></li>
+    <li><%= pharmacy.address %></li>
+  <% end %>
+</ul>

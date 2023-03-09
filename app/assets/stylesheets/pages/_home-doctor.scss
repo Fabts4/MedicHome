@@ -1,0 +1,20 @@
+.parent-flexbox {
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-footer { 
+    display: flex;
+    justify-content: center;
+    a {
+        text-decoration: none;
+        padding: 8px 32px;
+        color: white;
+        background-color: black;
+        border-radius: 25px;
+    }
+}
+.modal-global {
+    margin-top: 30vh;
+  
+}
