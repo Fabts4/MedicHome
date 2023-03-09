@@ -1,11 +1,11 @@
 class CartsController < ApplicationController
   def update
+    raise
     @cart = Cart.find(params[:id])
-  end
-
-  private
-
-  def cart_params
-    params.require(:cart).permit(:prescription_id, :pharmacy_id, :status, :final_price)
+    if @cart.update(:status, :final_price)
+      redirect_to prescription_pharmacy_path(@cart.pharmacy)
+    else
+      redirect_to prescription_pharmacy_path(@cart.pharmacy), status: :unprocessable_entity
+    end
   end
 end

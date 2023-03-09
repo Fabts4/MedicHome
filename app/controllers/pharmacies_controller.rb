@@ -7,7 +7,8 @@ class PharmaciesController < ApplicationController
       {
         lat: pharmacy.latitude,
         lng: pharmacy.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: { pharmacy: pharmacy})
+        info_window_html: render_to_string(partial: "info_window", locals: { pharmacy: pharmacy}),
+        marker_html: render_to_string(partial: "marker")
       }
     end
   end
