@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     resources :pharmacies, only: [:show, :index]
   end
 
-  resources :baskets, only: [:create, :update] do
-    resources :orders, only: [:create, :update, :destroy]
+  resources :carts, only: [:create, :update] do
+    resources :cart_items, only: [:create, :update, :destroy]
   end
 
 
