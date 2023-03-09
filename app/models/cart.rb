@@ -1,4 +1,4 @@
-class Basket < ApplicationRecord
+class Cart < ApplicationRecord
   belongs_to :prescription
   belongs_to :pharmacy
 
