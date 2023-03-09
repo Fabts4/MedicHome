@@ -14,7 +14,7 @@ class PharmaciesController < ApplicationController
 
   def show
     @pharmacy = Pharmacy.find(params[:id])
-    @basket = Basket.find_or_create_by(pharmacy_id: @pharmacy.id, prescription_id: @prescription.id)
+    @cart = Cart.find_or_create_by(pharmacy_id: @pharmacy.id, prescription_id: @prescription.id)
     @item = Item.all
   end
 

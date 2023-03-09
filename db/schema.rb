@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_112538) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_110538) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,15 +42,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_112538) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "baskets", force: :cascade do |t|
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "cart_id", null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["item_id"], name: "index_cart_items_on_item_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
     t.integer "status", default: 0
     t.integer "final_price"
     t.bigint "prescription_id", null: false
     t.bigint "pharmacy_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pharmacy_id"], name: "index_baskets_on_pharmacy_id"
-    t.index ["prescription_id"], name: "index_baskets_on_prescription_id"
+    t.index ["pharmacy_id"], name: "index_carts_on_pharmacy_id"
+    t.index ["prescription_id"], name: "index_carts_on_prescription_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -61,16 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_112538) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "administration"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.integer "quantity"
-    t.bigint "basket_id", null: false
-    t.bigint "item_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["basket_id"], name: "index_orders_on_basket_id"
-    t.index ["item_id"], name: "index_orders_on_item_id"
   end
 
   create_table "pharmacies", force: :cascade do |t|
@@ -127,10 +127,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_112538) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "baskets", "pharmacies"
-  add_foreign_key "baskets", "prescriptions"
-  add_foreign_key "orders", "baskets"
-  add_foreign_key "orders", "items"
+  add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "items"
+  add_foreign_key "carts", "pharmacies"
+  add_foreign_key "carts", "prescriptions"
   add_foreign_key "prescription_items", "items"
   add_foreign_key "prescription_items", "prescriptions"
   add_foreign_key "prescriptions", "users", column: "doctor_id"
