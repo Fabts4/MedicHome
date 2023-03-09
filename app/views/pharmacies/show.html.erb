@@ -4,4 +4,20 @@
 <h1><%= @pharmacy.name %></h1>
 <p><strong>Address:</strong> <%= @pharmacy.address %></p>
 
+<p>Display du basket:</p>
+<p><%= @basket.id %></li></p>
+<p><%= @basket.status %></li></p>
 
+<p>Medicament de l'ordonnance:</p>
+<ul><%  @drugs.each do |drug| %></ul>
+<li><%= drug.item.name %></li>
+<li><%= link_to "Ajouter ce medicament", basket_orders_path(@basket, item_id: drug.item.id), data: {turbo_method: :post} %></li>
+  <% end %>
+
+
+  <p>Medicament en ventes libres:</p>
+  <%  @parapharma.each do |para| %>
+  <ul>
+  <li><%= link_to para.name, basket_orders_path(@basket, item_id: para.id, quantity: 1), data: {turbo_method: :post} %></li>
+  </ul>
+  <% end %>

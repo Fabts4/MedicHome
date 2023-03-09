@@ -8,7 +8,8 @@ class PharmaciesController < ApplicationController
   def show
     @pharmacy = Pharmacy.find(params[:id])
     @basket = Basket.find_or_create_by(pharmacy_id: @pharmacy.id, prescription_id: @prescription.id)
-    @item = Item.all
+    @drugs = @prescription.prescription_items
+    @parapharma = Item.where(drug: false)
   end
 
   private
