@@ -1,0 +1,29 @@
+
+.banner-home h1 {
+  color: #153B8C;
+  font-size: 96px;
+  font-weight: 700;
+
+}
+
+.banner-home h2 {
+  color: #153B8C;
+  font-size: 72px;
+  font-weight: 700;
+
+}
+
+.banner-home p {
+  color: #153B8C;
+  font-size: 20px;
+}
+
+.banner-home {
+  padding-top: 100px;
+  padding-bottom: 300px;
+  background-image: image-url("background-banner.jpg");
+  background-size: cover;
+  background-position: center;
+  // width: 100px;
+  // height: 100px;
+}
