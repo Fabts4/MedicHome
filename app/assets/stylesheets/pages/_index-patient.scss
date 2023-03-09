@@ -1,0 +1,17 @@
+.flexbox-card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.card-patient-flexbox {
+    display: flex;
+    justify-content: space-between;
+}
+.titre-ordonnances {
+    text-align: center;
+}
+.card-ordonance-patient {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

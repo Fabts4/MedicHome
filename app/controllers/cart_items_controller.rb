@@ -4,10 +4,10 @@ class CartItemsController < ApplicationController
     redirect_to prescription_pharmacy_path(@cart_item.prescription, @cart_item.pharmacy)
   end
 
-  def update
+  def update # cette methode doit être revue après l'ajout de "quantity"
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
-      render :new
+      redirect_to prescription_pharmacy_path(@cart_item.prescription, @cart_item.pharmacy)
     else
       redirect_to prescription_pharmacy_path(@cart_item.prescription, @cart_item.pharmacy), status: :unprocessable_entity
     end
