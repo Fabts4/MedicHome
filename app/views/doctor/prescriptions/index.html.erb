@@ -32,9 +32,8 @@
     <p>Ordonance déjà transmise</p>
     <p class="card-footer">Created by Rahul C.</p>
     <ul>
-      <li><%= prescription.doctor_id %></li>
+      <li>Patient : <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></li>
       <li><%= prescription.date %></li>
-      <li><%= prescription.patient_id %></li>
       <li><%= prescription.status %></li>
       <div class="link-to">
       <%= link_to "Voir le detail",  doctor_prescription_path(prescription)  %>
@@ -72,4 +71,3 @@
     <p class="card-footer">Created by Rahul C.</p>
   </div>
 </div>
-
