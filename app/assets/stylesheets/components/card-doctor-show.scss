@@ -9,10 +9,7 @@
     box-sizing: inherit;
   }
   
-  p {
-    margin: 0;
-  }
-  
+ 
   p:not(:last-child) {
     margin-bottom: 1.5em;
   }
@@ -26,7 +23,7 @@
     justify-content: space-between;
   
     max-width: 500px;
-    height: 300px;
+    height: 100%;
     padding: 20px;
   
     border: 1px solid rgba(255, 255, 255, .25);
@@ -36,10 +33,21 @@
   
     backdrop-filter: blur(15px);
     margin: 50px;
+    p {
+      text-align: center;
+    }
+   
+    
   }
-  
   .card-footer {
     font-size: 0.65em;
     color: #446;
+  }
+  .flexbox-card-haut {
+    display: flex;
+    justify-content: space-between;
+  }
+  .flexbox-global {
+    
   }
   
