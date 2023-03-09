@@ -1,30 +1,40 @@
 <div class="container p-5">
-  <h1>Ordonance du Docteur Knock du 17 février 2023</h1>
-  <div id="ordonnance">
-    <div id="flex-column">
-        <div id="flexblox-ordonance-top">
-            <div class="text-ordonance">
-                <p>Docteur Knock</p>
-                <p>Médecin généraliste</p>
-                <p>Numéro RPPS : 6475903</p>
-                <p>St Maurice</p>
-            </div>
-            <div class="text-ordonance">
-                <p>Le 27 février 2023</p>
-                <p>Michel Dujardin</p>
-                <p>rue des Accacia</p>
-                <p>St Maurice</p>
-            </div>
-        </div>
+  <h1>Ordonnance pour le patient <%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></h1>
 
-        <div id="div-posologie">
-            <p>Doliprane 1000 mg,comprimé</p>
-            <p>Posologie:...fois par ... pendant ... ...</p>
-        </div>
-    </div>
-    <div class="footer-ordonance">
-        <a href="#" class="boutton-white">ordonnance</a>
-        <a href="#"><button class="bn632-hover bn26">signer et transmettre</button></a>
-    </div>
+
+<div id="ordonnance">
+  <div id="flex-column">
+      <div id="flexblox-ordonance-top">
+          <div class="text-ordonance">
+              <p><%= @prescription.doctor.first_name %> <%= @prescription.doctor.last_name %></p>
+              <p>Médecin généraliste</p>
+              <p>Numéro RPPS : <%= @prescription.doctor.rpps  %></p>
+              <p><%= @prescription.doctor.address  %></p>
+          </div>
+          <div class="text-ordonance">
+              <p>Le <%= Date.today.strftime('%d/%m/%Y')  %></p>
+              <p><%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></p>
+              <p><%= @prescription.patient.address %></p>
+              <p><strong>N° SS : </strong><%= @prescription.patient.ssn %></p>
+              <p><strong>Mutuelle : </strong> <%= @prescription.patient.mutuelle_name %></p>
+              <p><strong>N° Mutuelle : </strong><%= @prescription.patient.mutuelle_number %></p>
+          </div>
+      </div>
+
+
+      <div id="div-posologie">
+        <% @prescription_items.sort.reverse!.each do |prescription_item| %>
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item mt-4"><p><strong><%= prescription_item.item.name %></strong></p></li>
+          </ul>
+          <p><%= prescription_item.item.desc %></p>
+          <p class= "mb-4"> <u>Posologie : <%= prescription_item.posology %></u> </p>
+        <% end %>
+      </div>
   </div>
+  <div class="footer-ordonance">
+      <a href="/doctor/prescriptions" class="boutton-white">Sauvegarder</a>
+
+  </div>
+</div>
 </div>
