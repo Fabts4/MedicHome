@@ -5,16 +5,20 @@
     margin: 0 auto;
 }
 
+.trash-link {
+  text-decoration: none;
+  color: black
+}
 
 .container {
-    
+
     h1 {
     margin-bottom: 50px;
     margin-top: 50px;
     }
 }
     #ordonnance p {
-    padding: 16px;
+    padding: 5px;
     margin: 0;
     //  font-family: 'Rouge Script', cursive;
     font-family: 'Fragment Mono', monospace;
@@ -38,4 +42,3 @@
     .text-ordonance {
         margin: 0;
     }
-
