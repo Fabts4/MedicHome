@@ -1,13 +1,14 @@
-.card-ordonance-ordonance {
-    width: 40%;
-    min-height: 300px;
+.card-ordonance-patient {
+    width: 81%;
+    min-height: 257px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
   
     max-width: 500px;
     height: 100%;
     padding: 20px;
+    margin: 0 auto;
   
     border: 1px solid rgba(255, 255, 255, .25);
     border-radius: 20px;
@@ -15,6 +16,16 @@
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
   
     backdrop-filter: blur(15px);
-    margin: 50px;
+    margin: 0 auto;
+    margin-bottom: 63px;
+
+    p {
+        margin: 0;
+    }
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    
   }
   

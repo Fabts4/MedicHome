@@ -1,29 +1,28 @@
 
 <h1>Medichome</h1>  
 
-<% @prescriptions.each do |prescription|  %>
+<div class="flexbox-card">
+    <% @prescriptions.each do |prescription|  %>
 
-    <div class="card-ordonance-patient">
-        <p class="titre-ordonnance">hello</p>
-        <p class="card-footer"></p>
-        <ul>
-            <p><%= prescription.date %></p>
-            <p><%= prescription.doctor.first_name %></p>
-            <p><%= prescription.doctor.last_name %></p>
-            <p><%= prescription.patient.first_name %></p>
-            <p><%= prescription.patient.last_name %></p>
-            <p><%= prescription.status %></p>
-            
-        </ul>
-     
+        <div class="card-ordonance-patient">
+            <div class="flexbox-global">
+                    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style:'position: absolute;' %>
+                    <p class="titre-ordonnances"><%= prescription.status %></p>
+                <div class="card-patient-flexbox">
+                    <p><%= prescription.doctor.first_name %><%= prescription.doctor.last_name %></p>
+                    <p><%= prescription.date %></p>
+                </div>
+            </div>
+    
+                
       
-    <div class="link-to">
-        <div class="div-link">
-            <p><%= link_to "Voir le detail",  patient_prescription_path(prescription) %></p>
+            <div class="div-link">
+              <button class="bn632-hover bn26"><%= link_to "Voir le detail",  patient_prescription_path(prescription) %></button>   
+                 
+            </div>
         </div>
-    </div>
+    <% end %>
 </div>
-<% end %>
 <h2>Ordonnances</h2>
 <h1>Medichome</h1>   
 <%= image_tag "icons8-plan-de-traitement-64.png", alt: "icone de medoc" %>
