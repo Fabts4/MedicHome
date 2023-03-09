@@ -1,9 +1,9 @@
-class BasketsController < ApplicationController
+class CartsController < ApplicationController
   def create
     # @pharmacy = Pharmacy.find(params[:pharmacy_id])
     # # @prescription = Prescription.find(params[:prescription_id])
-    # @basket = Basket.new(basket_params)
-    # if @basket.save
+    # @cart = Cart.new(cart_params)
+    # if @cart.save
     #   redirect_to @pharmacy
     # else
     #   render :new # surement pas new, à MAJ
@@ -16,6 +16,6 @@ end
 
 # private
 
-# def basket_params
-#   params.require(:basket).permit(:prescription_id, :pharmacy_id, :status, :final_price)
+# def cart_params
+#   params.require(:cart).permit(:prescription_id, :pharmacy_id, :status, :final_price)
 # end
