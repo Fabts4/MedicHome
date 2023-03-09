@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   end
 
   resources :baskets, only: [:create, :update] do
-    resources :orders, only: [:create, :update, :destroy]
+    resources :orders, only: [:create]
   end
 
+  resources :orders, only: [:update, :destroy]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 end

@@ -17,7 +17,16 @@
 
   <p>Medicament en ventes libres:</p>
   <%  @parapharma.each do |para| %>
+  <% order = Order.find_by(item: para, basket: @basket) %>
   <ul>
-  <li><%= link_to para.name, basket_orders_path(@basket, item_id: para.id, quantity: 1), data: {turbo_method: :post} %></li>
+  <li><strong><%= link_to para.name, basket_orders_path(@basket, item_id: para.id, quantity: 1), data: {turbo_method: :post} %></strong></li>
+
+  <% if order.present? %>
+  <li><%= link_to "Modifier cet element", order_path(order), data: {turbo_method: :patch} %></li> <%# dynamiser la quantity quand le compteur sera codé %>
+  <li><%= link_to "Supprimer cet element", order_path(order), data: {turbo_method: :delete} %></li>
+  <% end %>
+
+
+  <br>
   </ul>
   <% end %>
