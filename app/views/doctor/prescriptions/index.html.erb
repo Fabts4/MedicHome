@@ -1,26 +1,19 @@
 <h1>Mes dernières ordonances</h1>
 <div id="flexbox-centrage">
+  <% @prescriptions.each do |prescription|  %>
   <div class="card-ordonance">
     <p>Ordonance déjà transmise</p>
     <p class="card-footer">Created by Rahul C.</p>
-<h1> Bienvenue sur MedicHome</h1>
-<div class="parent-flexbox">
-    <button class= "boutton-carré" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <p>fdfdf </p>
-    </button>
-    <button class= "boutton-carré">
-        <p>fdfdf </p>
-    </button>
+    <ul>
+      <li><%= prescription.doctor_id %></li>
+      <li><%= prescription.date %></li>
+      <li><%= prescription.patient_id %></li>
+      <li><%= prescription.status %></li>
+      <div class="link-to">
+      <%= link_to "Voir le detail",  doctor_prescription_path(prescription)  %>
+      </div>
+    </ul>
 </div>
-
-<% @prescriptions.each do |prescription|  %>
-<ul>
-<li><%= prescription.date %></li>
-<li><%= prescription.doctor_id %></li>
-<li><%= prescription.patient_id %></li>
-<li><%= prescription.status %></li>
-<li><%= link_to "Voir le detail",  doctor_prescription_path(prescription) %></li>
-</ul>
 <% end %>
 
 <!-- Modal -->
