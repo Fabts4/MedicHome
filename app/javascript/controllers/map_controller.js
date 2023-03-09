@@ -29,6 +29,11 @@ export default class extends Controller {
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)
+
+      popup.on('open', () => {
+        const coordinates = this.#getItinerary();
+        this.#drawRouteOnMap(coordinates)
+      });
     })
   }
 
@@ -49,4 +54,21 @@ export default class extends Controller {
       .setLngLat([ lng, lat ]).addTo(this.map)
     }));
   }
+
+    #getItinerary() {
+      console.log(this.data);
+
+      // 1.Je dois récupérer les coords (lon, lat) de mon point de départ
+      // 2. Je récupère les coords de mon point d'arrivee
+      // 3. je fabrique l'url pour interroger l'API Mapbox Directions
+      // https://api.mapbox.com/directions/v5/mapbox/driving/2.3799993,48.8651313;2.33155,48.866718?geometries=geojson&access_token=pk.eyJ1IjoiZmFidHM0IiwiYSI6ImNsZHlrNjMwYzA4NXEzbnM1MDFrcHk0dXAifQ.Zlwca078xZsBRf1TdFGAJA
+      // 4. Je dois fetcher cette URL
+      // 5. Je récupère dans le JSON les coordinates
+    }
+      //mapbox/walking
+    #drawRouteOnMap(coordinates) {
+      // 6. Je créé un layer sur la carte Mapbox avec une LineString construite à partir des coordonnées
+      //https://docs.mapbox.com/mapbox-gl-js/example/geojson-line/
+    }
+
 }
