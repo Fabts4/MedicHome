@@ -4,9 +4,12 @@
 <h1><%= @pharmacy.name %></h1>
 <p><strong>Address:</strong> <%= @pharmacy.address %></p>
 
-<p>Display de la cart:</p>
+<p>Display de la carte:</p>
 <p><%= @cart.id %></li></p>
 <p><%= @cart.status %></li></p>
+
+
+<p><%= link_to "Update cart(FOR ROUTE TEST)", cart_path(@cart), data: {turbo_method: :patch} %></p>
 
 <p>Medicament de l'ordonnance:</p>
 <ul><%  @drugs.each do |drug| %></ul>
@@ -14,19 +17,34 @@
 <li><%= link_to "Ajouter ce medicament", cart_cart_items_path(@cart, item_id: drug.item.id), data: {turbo_method: :post} %></li>
   <% end %>
 
+<br>
 
-  <p>Medicament en ventes libres:</p>
-  <%  @parapharma.each do |para| %>
-  <% cart_item = CartItem.find_by(item: para, cart: @cart) %>
-  <ul>
-  <li><strong><%= link_to para.name, cart_cart_items_path(@cart, item_id: para.id, quantity: 1), data: {turbo_method: :post} %></strong></li>
-
-  <% if cart_item.present? %>
-  <li><%= link_to "Modifier cet element", cart_item_path(cart_item), data: {turbo_method: :patch} %></li> <%# dynamiser la quantity quand le compteur sera codé %>
-  <li><%= link_to "Supprimer cet element", cart_item_path(cart_item), data: {turbo_method: :delete} %></li>
+<h3>Liste des items</h3>
+<div class="product-cards container">
+  <% @parapharma.each do |para| %>
+        <div class="product-card">
+          <div class="product-photo">
+           <%# <%= cl_image_tag para.image_url, alt: para.name %>
+           <%= cl_image_tag para.photo.key, height: 150, width: 150, crop: :fit, class: " img-show" %>
+          </div>
+          <div class="product-details">
+            <h4><%= para.name %></h4>
+            <p><%= para.desc %></p>
+          </div>
+          <div class="product-add">
+            <% cart_item = CartItem.find_by(item: para, cart: @cart) %>
+            <div class="quantity">
+              <button class="decrement">-</button>
+              <input type="number" class="quantity-input" value="<%= cart_item.present? ? cart_item.quantity : 1 %>" min="1">
+              <button class="increment">+</button>
+            </div>
+            <% if cart_item.present? %>
+              <%= link_to "Update", cart_item_path(cart_item, quantity: 2), class: "update-button", data: { turbo_method: :patch } %>
+              <%= link_to "Remove", cart_item_path(cart_item), class: "remove-button", data: { turbo_method: :delete } %>
+            <% else %>
+              <%= link_to "Add", cart_cart_items_path(@cart, item_id: para.id, quantity: 1), class: "add-button", data: { turbo_method: :post } %>
+            <% end %>
+          </div>
+        </div>
   <% end %>
-
-
-  <br>
-  </ul>
-  <% end %>
+</div>
