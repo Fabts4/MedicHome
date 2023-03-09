@@ -1,3 +1,49 @@
-<%= render "shared/navbar-doctor" %>
-<h1>Prescriptions#edit</h1>
-<p>Find me in app/views/prescriptions/edit.html.erb</p>
+<div class="container">
+  <h1>Prescriptions#edit</h1>
+
+<%= simple_form_for(@prescription_item, url: doctor_prescription_prescription_items_path(@prescription), method: 'POST') do |f| %>
+  <%= f.input :item_id, label: "Choisir un medicament", collection: @items %>
+  <%= f.input :posology, label: "Posologie", input_html: {value: 'bla'} %>
+  <%= f.submit 'Ajouter', class: "btn btn-primary" %>
+<% end %>
+
+<br>
+<br>
+  <div>
+    <p>Médecin :</p>
+    <p><%= @prescription.doctor.first_name %> <%= @prescription.doctor.last_name %></p>
+    <p>RPPS : <%= @prescription.doctor.rpps  %></p>
+  </div>
+<br>
+<br>
+  <div>
+    <p>Patient :</p>
+    <p><%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></p>
+    <p>Numéro de Sécurité sociale : <%= @prescription.patient.ssn  %></p>
+    <p>Mutuelle : <%= @prescription.patient.mutuelle_name %></p>
+    <p>Ref Mutuelle : <%= @prescription.patient.mutuelle_number %></p>
+  </div>
+
+  <br>
+  <br>
+    <div>
+      <p>Medocs prescrits :</p>
+      <% @prescription_items.each do |prescription_item| %>
+      <li>
+        <%= prescription_item.item.name %>
+        <%= prescription_item.item.desc %>
+        Posologie : <%= prescription_item.posology %>
+      </li>
+      <% end %>
+
+    </div>
+
+<br>
+<br><br>
+<br><br>
+<br><br>
+<br>
+
+
+</div>
+
