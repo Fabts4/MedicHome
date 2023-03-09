@@ -8,4 +8,11 @@ class Patient < User
   validates :mutuelle_name, presence: true
   validates :mutuelle_number, presence: true
 
+  def self.simple_form_collection
+    all.map { |patient| [patient.full_name, patient.id] }
+  end
+
+  def full_name
+    "#{first_name} #{last_name} (#{ssn})"
+  end
 end
