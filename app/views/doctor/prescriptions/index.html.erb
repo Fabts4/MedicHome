@@ -29,15 +29,16 @@
 <div id="flexbox-centrage">
   <% @prescriptions.each do |prescription|  %>
   <div class="card-ordonance">
-    <p>Ordonance déjà transmise</p>
-    <p class="card-footer">Created by Rahul C.</p>
+    <p class="titre-ordonnance"><%= prescription.status %></p>
+    <p class="card-footer"></p>
     <ul>
-      <li><%= prescription.doctor_id %></li>
-      <li><%= prescription.date %></li>
-      <li><%= prescription.patient_id %></li>
-      <li><%= prescription.status %></li>
+      <p><%= prescription.doctor_id %></p>
+      <p><%= prescription.date %></p>
+      <p><%= prescription.patient_id %></p>
+      
       <div class="link-to">
-      <%= link_to "Voir le detail",  doctor_prescription_path(prescription)  %>
+      <div class="div-link">
+      <%= link_to "Voir le detail",  doctor_prescription_path(prescription), class:"link-to"  %>
       </div>
     </ul>
 </div>

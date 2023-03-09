@@ -2,10 +2,15 @@
 <div class="parent-flexbox">
     <button class= "boutton-carré" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserChoiceModal">
         <p>Nouvelle Ordonnance</p>
+        <%= image_tag "icons8-plan-de-traitement-64.png", alt: "icone de medoc" %>
+
     </button>
     <%= link_to  doctor_prescriptions_path do %>
     <button class= "boutton-carré">
-        <p>Mes ordonnances </p>
+        <p>Rechercher une ordonnance</p>
+        <%= image_tag "icons8-chercher-64.png", alt: "icone de search" %>
+        
+
     </button>
     <% end %>
 
@@ -13,16 +18,16 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="UserChoiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-global modal fade" id="UserChoiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Choisir un patient</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-footer modal-body">
         <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
-          <%= f.input :patient_id, collection: Patient.simple_form_collection %>
+          <%= f.input :patient_id, collection: Patient.simple_form_collection,class:"input-modal" %>
           <%= f.submit 'Commencer', class: "btn btn-primary" %>
         <% end %>
       </div>

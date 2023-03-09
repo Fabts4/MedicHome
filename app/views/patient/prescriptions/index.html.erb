@@ -1,13 +1,30 @@
-<h1>Prescriptions#index</h1>
-<p>Find me in app/views/prescriptions/index.html.erb</p>
-
+<h1>Medichome</h1>  
 
 <% @prescriptions.each do |prescription|  %>
-<ul>
-<li><%= prescription.date %></li>
-<li><%= prescription.doctor_id %></li>
-<li><%= prescription.patient_id %></li>
-<li><%= prescription.status %></li>
-<li><%= link_to "Voir le detail",  patient_prescription_path(prescription) %></li>
-</ul>
+
+    <div class="card-ordonance-patient">
+        <p class="titre-ordonnance">hello</p>
+        <p class="card-footer"></p>
+        <ul>
+            <p><%= prescription.date %></p>
+            <p><%= prescription.doctor.first_name %></p>
+            <p><%= prescription.doctor.last_name %></p>
+            <p><%= prescription.patient.first_name %></p>
+            <p><%= prescription.patient.last_name %></p>
+            <p><%= prescription.status %></p>
+            
+        </ul>
+     
+      
+    <div class="link-to">
+        <div class="div-link">
+            <p><%= link_to "Voir le detail",  patient_prescription_path(prescription) %></p>
+        </div>
+    </div>
+</div>
 <% end %>
+<h2>Ordonnances</h2>
+<h1>Medichome</h1>   
+<%= image_tag "icons8-plan-de-traitement-64.png", alt: "icone de medoc" %>
+
+
