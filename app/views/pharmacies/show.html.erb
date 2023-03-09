@@ -4,4 +4,29 @@
 <h1><%= @pharmacy.name %></h1>
 <p><strong>Address:</strong> <%= @pharmacy.address %></p>
 
+<p>Display de la cart:</p>
+<p><%= @cart.id %></li></p>
+<p><%= @cart.status %></li></p>
 
+<p>Medicament de l'ordonnance:</p>
+<ul><%  @drugs.each do |drug| %></ul>
+<li><%= drug.item.name %></li>
+<li><%= link_to "Ajouter ce medicament", cart_cart_items_path(@cart, item_id: drug.item.id), data: {turbo_method: :post} %></li>
+  <% end %>
+
+
+  <p>Medicament en ventes libres:</p>
+  <%  @parapharma.each do |para| %>
+  <% cart_item = CartItem.find_by(item: para, cart: @cart) %>
+  <ul>
+  <li><strong><%= link_to para.name, cart_cart_items_path(@cart, item_id: para.id, quantity: 1), data: {turbo_method: :post} %></strong></li>
+
+  <% if cart_item.present? %>
+  <li><%= link_to "Modifier cet element", cart_item_path(cart_item), data: {turbo_method: :patch} %></li> <%# dynamiser la quantity quand le compteur sera codé %>
+  <li><%= link_to "Supprimer cet element", cart_item_path(cart_item), data: {turbo_method: :delete} %></li>
+  <% end %>
+
+
+  <br>
+  </ul>
+  <% end %>
