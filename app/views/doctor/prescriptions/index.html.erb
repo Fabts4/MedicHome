@@ -30,7 +30,7 @@
     <% if prescription.draft? %>
       <p> <i class="fa-solid fa-file-medical fa-xl"></i> <strong>Ordonnance à finaliser</strong> </p>
     <% else %>
-      <p> Ordonnance émise</p>
+      <p> <i class="fa-solid fa-file-medical fa-xl"></i> Ordonnance émise</p>
     <% end %>
 
     <% if prescription.patient.photo.attached? %>

@@ -23,21 +23,24 @@ georges = Patient.create!(email: 'bernard@gmail.com', password: 'azerty', first_
 fabien_photo = URI.open('https://upload.wikimedia.org/wikipedia/commons/3/38/Grand_Corps_Malade_D%C3%A9jeuner_C%C3%A9sar_2018.jpg')
 fabien.photo.attach(io: fabien_photo, filename: "Fabien.jpg", content_type: "image/jpg")
 
+georges_photo = URI.open('https://www.gala.fr/imgre/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fgal.2Fvar.2Fgal.2Fstorage.2Fimages.2Fmedia.2Fmultiupload_du_15_octobre_2011.2Fmoustaki.2F1774975-1-fre-FR.2Fmoustaki.2Ejpg/1504x846/quality/80/georges-moustaki-ne-peut-plus-chanter.jpg')
+georges.photo.attach(io: georges_photo, filename: "Georges.jpg", content_type: "image/jpg")
+
 doc_knock_photo = URI.open('https://philitt.fr/wp-content/uploads/2013/10/18865759-9ef1b.jpg')
 doc_knock.photo.attach(io: doc_knock_photo, filename: "DocKnock.jpg", content_type: "image/jpg")
 
 raoult_photo = URI.open('https://cloudfront-eu-central-1.images.arcpublishing.com/leparisien/553ZIG5WSBDW5HNQ2FN4TOENLY.jpg')
 raoult.photo.attach(io: raoult_photo, filename: "DocOc.jpg", content_type: "image/jpg")
 
-prescription_1 = Prescription.create!(date: '06/03/2023', status: 2, doctor_id: doc_knock.id, patient_id: fabien.id)
-prescription_2 = Prescription.create!(date: '14/01/2022', status: 2, doctor_id: doc_knock.id, patient_id: fabien.id)
-prescription_3 = Prescription.create!(date: '30/08/2021', status: 2, doctor_id: doc_knock.id, patient_id: fabien.id)
+prescription_1 = Prescription.create!(date: '06/03/2023', status: 2, doctor_id: doc_knock.id, patient_id: georges.id)
+prescription_2 = Prescription.create!(date: '14/01/2022', status: 2, doctor_id: doc_knock.id, patient_id: georges.id)
+prescription_3 = Prescription.create!(date: '30/08/2021', status: 2, doctor_id: doc_knock.id, patient_id: georges.id)
 prescription_4 = Prescription.create!(date: '22/01/2020', status: 2, doctor_id: doc_knock.id, patient_id: fabien.id)
 prescription_5 = Prescription.create!(date: '28/02/2018', status: 2, doctor_id: doc_knock.id, patient_id: fabien.id)
 prescription_6 = Prescription.create!(date: '12/07/2022', status: 2, doctor_id: doc_knock.id, patient_id: fabien.id)
-prescription_7 = Prescription.create!(date: '14/07/2018', status: 2, doctor_id: raoult.id, patient_id: georges.id)
-prescription_8 = Prescription.create!(date: '31/05/2020', status: 2, doctor_id: raoult.id, patient_id: georges.id)
-prescription_9 = Prescription.create!(date: '30/11/2019', status: 2, doctor_id: raoult.id, patient_id: georges.id)
+prescription_7 = Prescription.create!(date: '14/07/2018', status: 2, doctor_id: raoult.id, patient_id: fabien.id)
+prescription_8 = Prescription.create!(date: '31/05/2020', status: 2, doctor_id: raoult.id, patient_id: fabien.id)
+prescription_9 = Prescription.create!(date: '30/11/2019', status: 2, doctor_id: raoult.id, patient_id: fabien.id)
 prescription_10 = Prescription.create!(date: '15/09/2022', status: 2, doctor_id: raoult.id, patient_id: georges.id)
 prescription_11 = Prescription.create!(date: '25/12/2020', status: 2, doctor_id: raoult.id, patient_id: georges.id)
 prescription_12 = Prescription.create!(date: '11/04/2013', status: 2, doctor_id: raoult.id, patient_id: georges.id)
@@ -54,9 +57,9 @@ pharmacy_9 = Pharmacy.create!(name: 'Pharmol', address: '1 rue Caillou Mérard, 
 pharmacy_10 = Pharmacy.create!(name: 'Pharniente', address: '4 boulevard des Italiens, Paris')
 
 
-prescription_item_1 = PrescriptionItem.create!(prescription_id: prescription_1.id, posology: "blabla 1", item_id: Item.find_by(name: 'ABRAXANE 5 mg/ml').id)
-prescription_item_2 = PrescriptionItem.create!(prescription_id: prescription_7.id, posology: "blabla 2", item_id: Item.find_by(name: "ABILIFY 15 mg").id)
-prescription_item_3 = PrescriptionItem.create!(prescription_id: prescription_5.id, posology: "blabla 3", item_id: Item.find_by(name: "ABIES NIGRA BOIRON").id)
+prescription_item_1 = PrescriptionItem.create!(prescription_id: prescription_6.id, posology: "2 fois par jour pendant 5 jours", item_id: Item.find_by(name: 'ABRAXANE 5 mg/ml').id)
+prescription_item_2 = PrescriptionItem.create!(prescription_id: prescription_6.id, posology: "3 fois par jour pendant 5 jours", item_id: Item.find_by(name: "ABILIFY 15 mg").id)
+prescription_item_3 = PrescriptionItem.create!(prescription_id: prescription_6.id, posology: "1 fois par jour pendant 5 jours", item_id: Item.find_by(name: "ABIES NIGRA BOIRON").id)
 
 
 item_1 = Item.create!(name: 'Doliprane 1000mg', desc: 'comprimé', administration: 'orale', price: 3, drug: false)
