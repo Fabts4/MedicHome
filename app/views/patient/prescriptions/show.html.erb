@@ -32,8 +32,10 @@
         <% end %>
       </div>
   </div>
-  <div class="footer-ordonance">
-      <p><%= link_to "Choisir une pharmacie", prescription_pharmacies_path(params[:id]), class: "btn btn-primary"%></p>
-  </div>
+  <% if @prescription.sent? %>
+    <div class="footer-ordonance">
+        <p><%= link_to "Choisir une pharmacie", prescription_pharmacies_path(params[:id]), class: "btn btn-primary"%></p>
+    </div>
+  <% end %>
 </div>
 </div>
