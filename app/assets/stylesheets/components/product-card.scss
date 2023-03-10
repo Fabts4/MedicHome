@@ -1,18 +1,8 @@
  /* Define the overall card container */
 
- .product-cards {
-
-  width: 100%;
-  max-width: 800px;
-}
  .product-card {
   display: flex;
   margin-bottom: 10px;
-  flex-direction: row;
-  flex-basis: 50%;
-  width: 80%;
-  height: 150px;
-  max-width: 800px;
   border: 1px solid #ddd;
   background-color: white;
   border-radius: 4px;
@@ -21,22 +11,27 @@
 
 /* Define the left third for the product photo */
 .product-photo {
-  flex: 1;
   margin-right: 16px;
+  img {
+  width: 100px;
+  }
 }
 
 /* Define the middle third for the product name and description */
 .product-details {
-  flex: 2;
+    flex-grow: 1;
+  h4 {
+    font-size: 1rem;
+  }
 }
 
 /* Define the right third for the quantity counter and add button */
 .product-add {
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 /* Style the quantity counter */

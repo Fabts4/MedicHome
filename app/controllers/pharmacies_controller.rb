@@ -17,6 +17,7 @@ class PharmaciesController < ApplicationController
     @cart = Cart.find_or_create_by(pharmacy_id: @pharmacy.id, prescription_id: @prescription.id)
     @drugs = @prescription.prescription_items
     @parapharma = Item.where(drug: false)
+    @cart_items = @cart.cart_items
   end
 
   private
