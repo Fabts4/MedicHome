@@ -4,6 +4,7 @@ class Patient::PrescriptionsController < ApplicationController
   end
 
   def show
-    @prescription = Prescription.where(patient: current_user, id: params[:id])
+    @prescription = Prescription.find(params[:id])
+    @prescription_items = PrescriptionItem.where(prescription_id: @prescription.id)
   end
 end
