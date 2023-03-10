@@ -1,0 +1,5 @@
+meta_name: "MedicHome"
+meta_title: "MedicHome - Un nouveau moyen de prendre soin de votre santé"
+meta_description: "MedicHome permet de digitaliser entièrement la relation patient, médecin, phamarcie"
+meta_image: "cover.jpg" # should exist in `app/assets/images/`
+twitter_account: "@LeWwgonparis"   # required for Twitter Cards
