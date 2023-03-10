@@ -1,30 +1,91 @@
 
-<h1>Medichome</h1>  
-
-<div class="flexbox-card">
-    <% @prescriptions.each do |prescription|  %>
-
-        <div class="card-ordonance-patient">
-            <div class="flexbox-global">
-                    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style:'position: absolute;' %>
-                    <p class="titre-ordonnances"><%= prescription.status %></p>
-                <div class="card-patient-flexbox">
-                    <p><%= prescription.doctor.first_name %><%= prescription.doctor.last_name %></p>
-                    <p><%= prescription.date %></p>
-                </div>
-            </div>
-    
-                
-      
-            <div class="div-link">
-              <button class="bn632-hover bn26"><%= link_to "Voir le detail",  patient_prescription_path(prescription) %></button>   
-                 
-            </div>
-        </div>
-    <% end %>
-</div>
+<h1>Medichome</h1>
 <h2>Ordonnances</h2>
-<h1>Medichome</h1>   
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">En cours</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Passées</button>
+  </li>
+
+
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+
+    <h3>Ordonnances à utiliser</h3>
+    <% @draft_prescriptions.sort.reverse!.each do |prescription|  %>
+
+          <div class="card-ordonance-patient">
+              <div class="flexbox-global">
+                      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style:'position: absolute;' %>
+                      <p class="titre-ordonnances"><%= prescription.status %></p>
+                  <div class="card-patient-flexbox">
+                      <p><%= prescription.doctor.first_name %><%= prescription.doctor.last_name %></p>
+                      <p><%= prescription.date %></p>
+                  </div>
+              </div>
+
+
+
+              <div class="div-link">
+                <button class="bn632-hover bn26"><%= link_to "Voir le detail",  patient_prescription_path(prescription) %></button>
+
+              </div>
+          </div>
+    <% end %>
+
+    <h3>Ordonnances envoyées à la pharmacie</h3>
+    <% @sent_prescriptions.sort.reverse!.each do |prescription|  %>
+
+          <div class="card-ordonance-patient">
+              <div class="flexbox-global">
+                      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style:'position: absolute;' %>
+                      <p class="titre-ordonnances"><%= prescription.status %></p>
+                  <div class="card-patient-flexbox">
+                      <p><%= prescription.doctor.first_name %><%= prescription.doctor.last_name %></p>
+                      <p><%= prescription.date %></p>
+                  </div>
+              </div>
+
+
+
+              <div class="div-link">
+                <button class="bn632-hover bn26"><%= link_to "Voir le detail",  patient_prescription_path(prescription) %></button>
+
+              </div>
+          </div>
+    <% end %>
+
+
+  </div>
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+    <% @ordered_prescriptions.sort.reverse!.each do |prescription|  %>
+
+          <div class="card-ordonance-patient">
+              <div class="flexbox-global">
+                      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style:'position: absolute;' %>
+                      <p class="titre-ordonnances"><%= prescription.status %></p>
+                  <div class="card-patient-flexbox">
+                      <p><%= prescription.doctor.first_name %><%= prescription.doctor.last_name %></p>
+                      <p><%= prescription.date %></p>
+                  </div>
+              </div>
+
+
+
+              <div class="div-link">
+                <button class="bn632-hover bn26"><%= link_to "Voir le detail",  patient_prescription_path(prescription) %></button>
+
+              </div>
+          </div>
+      <% end %>
+  </div>
+</div>
+
+
+
+<%# <h1>Medichome</h1> %>
 <%= image_tag "icons8-plan-de-traitement-64.png", alt: "icone de medoc" %>
-
-

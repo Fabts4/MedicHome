@@ -26,7 +26,7 @@
         <%= render "shared/navbar" %>
       <% else %>
         <%= render "shared/navbar-user" %>
-        <% end %>
+      <% end %>
     <% else %>
       <%= render "shared/navbar" %>
     <% end %>
@@ -34,5 +34,8 @@
     <%= render "shared/flashes" %>
 
     <%= yield %>
+    <% if !current_user.doctor? %>
+        <%= render "shared/footer" %>
+    <% end %>
   </body>
 </html>
