@@ -35,8 +35,10 @@
     <%= render "shared/flashes" %>
 
     <%= yield %>
+    <% if user_signed_in? %>
     <% if !current_user.doctor? %>
         <%= render "shared/footer" %>
     <% end %>
+    <% end  %>
   </body>
 </html>

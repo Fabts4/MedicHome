@@ -3,7 +3,8 @@
   <p><strong>Address:</strong> <%= @pharmacy.address %></p>
 
 
-  <%= link_to "Update cart(FOR ROUTE TEST)", cart_path(@cart), data: {turbo_method: :patch} %>
+  <%= link_to "Commander", patient_prescriptions_path %>
+<%#= link_to "Update cart(FOR ROUTE TEST)", cart_path(@cart), data: {turbo_method: :patch} %>
 
   <div class="checkout-card">
     <div class="checkout-section">

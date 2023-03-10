@@ -45,7 +45,6 @@ prescription_10 = Prescription.create!(date: '15/09/2022', status: 2, doctor_id:
 prescription_11 = Prescription.create!(date: '25/12/2020', status: 2, doctor_id: raoult.id, patient_id: georges.id)
 prescription_12 = Prescription.create!(date: '11/04/2013', status: 2, doctor_id: raoult.id, patient_id: georges.id)
 
-pharmacy_1 = Pharmacy.create!(name: 'PharmacisileS', address: '16 villa Gaudelet, Paris')
 pharmacy_2 = Pharmacy.create!(name: 'Pharmatop', address: '48 boulevard Raspail, Paris ')
 pharmacy_3 = Pharmacy.create!(name: 'Pharmapastop', address: '2 rue Malebranche, Paris')
 pharmacy_4 = Pharmacy.create!(name: 'Pharmasifreddi', address: '3 rue des Petites Ecuries, Paris')
