@@ -1,0 +1,26 @@
+
+.cards-homepage {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.card-homepage {
+  border-radius: 6px;
+  box-shadow: 0 0 7px rgb(2, 1, 1);
+  text-align: center;
+  padding: 20px;
+  border: 1px solid rgb(230,230,230);
+  width: "60%";
+  height: "60%";
+}
+
+.card p {
+  opacity: .5;
+}
+
+.text-question {
+  text-align: center;
+  text-decoration: none;
+}

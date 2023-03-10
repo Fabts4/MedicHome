@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   namespace :doctor do
     resources :prescriptions, only: [:index, :show, :create, :edit, :update] do
-      resources :prescription_items, only: [:create, :update, :destroy]
+      resources :prescription_items, only: [:create]
     end
+    resources :prescription_items, only: [:destroy, :update]
   end
 
   namespace :patient do

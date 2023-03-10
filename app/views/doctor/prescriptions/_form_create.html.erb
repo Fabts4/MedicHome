@@ -1,0 +1,5 @@
+<%= simple_form_for(prescription_item, url: doctor_prescription_prescription_items_path(prescription)) do |f| %>
+  <%= f.input :item_id, label: "Choisir un medicament", collection: items %>
+  <%= f.input :posology, label: "Posologie", input_html: {value: '... fois par jour pendant ... jours'} %>
+  <%= f.submit 'Ajouter', class: "btn btn-primary" %>
+<% end %>
