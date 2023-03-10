@@ -1,26 +1,90 @@
 
-.cards-homepage {
+body {
+  padding: O;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+}
+
+
+.home-cards-container {
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .card-homepage {
-  border-radius: 6px;
-  box-shadow: 0 0 7px rgb(2, 1, 1);
-  text-align: center;
-  padding: 20px;
-  border: 1px solid rgb(230,230,230);
-  width: "60%";
-  height: "60%";
+  height: 400px;
+  width: 310px;
+  background-color: #fff;
+  transform: scale(0.7);
+  border-radius: 8px;
+  box-shadow: 0 0 10px 1px #4169b0 ;
 }
 
-.card p {
-  opacity: .5;
+.card-hp-info{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.text-question {
+.card-hp-profession {
+  font-size: 35px;
+  font-weight: 600;
+  color: #2F5EC0;
+  position: absolute;
+  top: 100px;
+  letter-spacing: 2px;
+  left: 30%;
+}
+
+.hp-bio {
+  font-size: 16px;
+  color: #555555;
+  position: absolute;
+  top: 200px;
   text-align: center;
+}
+
+.card-hp-divider {
+  background-color: #949594;
+  height: 1.5px;
+  width: 50%;
+  position: absolute;
+  top: 280px;
+  left: 25%;
+}
+
+.card-photo-hp {
+  height: 100%;
+  width: 100%;
+  background-image: url(doctor.jpg);
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 0;
+  background-size: 100% 100%;
+  border-radius: 8px;
+  transition: 1.2s;
+}
+
+.card-homepage:hover .card-photo-hp{
+  transform: scale(0.5, 0.35) translateY(-650px);
+  border-radius: 50%;
+  background-size: 100% 150%;
+  background-position: 0 -25px;
+}
+
+.lien-homepage {
+  position: absolute;
+  box-shadow: -70px;
+  font-size: 20px;
+  color:white;
+  background-color: #2F5EC0;
+  width: 100%;
+  padding: 12px 0;
+  font-weight: 600;
   text-decoration: none;
-}
+  text-align: center;
+  border-radius: 8px;
+  }
