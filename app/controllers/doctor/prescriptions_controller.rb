@@ -5,7 +5,8 @@ class Doctor::PrescriptionsController < ApplicationController
   end
 
   def show
-    @prescription = Prescription.where(doctor: current_user, id: params[:id])
+    @prescription = Prescription.find(params[:id])
+    @prescription_items = PrescriptionItem.where(prescription_id: @prescription.id)
   end
 
   def edit
@@ -16,6 +17,9 @@ class Doctor::PrescriptionsController < ApplicationController
   end
 
   def update
+    @prescription = Prescription.find(params[:id])
+    @prescription.update(status: 1, date: Date.today)
+    redirect_to doctor_prescriptions_path()
   end
 
   def create
@@ -24,7 +28,7 @@ class Doctor::PrescriptionsController < ApplicationController
       @prescriptions = Prescription.where(doctor: current_user)
       render 'doctor/prescriptions/index', status: :unprocessable_entity
     else
-      @prescription = Prescription.find_or_create_by(prescription_params.merge(doctor: current_user))
+      @prescription = Prescription.create(prescription_params.merge(doctor: current_user, date: Date.today))
       redirect_to edit_doctor_prescription_path(@prescription)
     end
   end
