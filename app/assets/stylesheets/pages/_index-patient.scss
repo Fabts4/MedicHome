@@ -6,6 +6,7 @@
 .card-patient-flexbox {
     display: flex;
     justify-content: space-between;
+    margin-top: 50px;
 }
 .titre-ordonnances {
     text-align: center;
@@ -15,3 +16,4 @@
     flex-direction: column;
     justify-content: space-between;
 }
+

@@ -6,6 +6,8 @@ class Prescription < ApplicationRecord
   has_many :carts, dependent: :destroy
   has_many :items, through: :prescription_items
 
+  scope :filter_by_status, -> (status) { where status: status }
+
   enum status: {
     draft: 0,
     sent: 1,
