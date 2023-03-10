@@ -3,6 +3,28 @@
     justify-content: space-between;
     flex-direction: column;
     margin: 0 auto;
+
+    &.patient_ordonnance {
+      padding: 10px;
+      margin-bottom: 100px;
+      box-sizing: border-box;
+
+      p {
+        font-size: 16px;
+      }
+
+      #flexblox-ordonance-top {
+        flex-direction: column;
+
+        > div {
+          margin-bottom: 30px;
+        }
+      }
+
+      #div-posologie {
+        margin-top: 0px;
+      }
+    }
 }
 
 .trash-link {
@@ -36,4 +58,3 @@ display: flex;
 .text-ordonance {
     margin: 0;
 }
-
