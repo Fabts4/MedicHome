@@ -1,9 +1,6 @@
 <h1>Mes dernières ordonnances</h1>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserChoiceModal">
-  Préparer une nouvelle ordonnance
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="UserChoiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -30,16 +27,18 @@
     <% if prescription.draft? %>
       <p> <i class="fa-solid fa-file-medical fa-xl"></i> <strong>Ordonnance à finaliser</strong> </p>
     <% else %>
-      <p> Ordonnance émise</p>
+      <p><i class="fa-solid fa-file-medical fa-xl"></i> Ordonnance émise</p>
     <% end %>
 
     <% if prescription.patient.photo.attached? %>
     <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key, class: "avatar" %></p>
     <% end %>
-
-    <ul>
-      <li><i class="fa-solid fa-person"></i> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></li>
-      <li><i class="fa-regular fa-calendar"></i> <%= prescription.date %></li>
+    <div class="flex-ul">
+        <p><i class="fa-solid fa-person"></i> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
+        <p><i class="fa-regular fa-calendar"></i> <%= prescription.date %></p>
+      
+    </div>
+        <div class="div-link">
       <% if prescription.draft? %>
         <%= link_to edit_doctor_prescription_path(prescription) do %>
           <button class="bn632-hover bn26">Finaliser</button>
@@ -47,11 +46,11 @@
       <% else %>
         <%= link_to doctor_prescription_path(prescription) do %>
           <button class="bn632-hover bn26">Consulter</button>
+        </div>
+  </div>
         <% end %>
       <% end %>
-    </ul>
-    </div>
-<% end %>
+    <% end %>
 
 <!-- Modal -->
 <div class="modal-global modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
