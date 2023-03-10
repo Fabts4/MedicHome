@@ -1,8 +1,8 @@
-<div class="container p-5">
-  <h1>Ordonnance pour le patient <%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></h1>
+<%# <div class="container"> %>
+  <h1 class="title_ordo_patient">Ordonnance pour le patient <%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></h1>
 
 
-<div id="ordonnance">
+<div id="ordonnance" class="patient_ordonnance">
   <div id="flex-column">
       <div id="flexblox-ordonance-top">
           <div class="text-ordonance">
@@ -38,4 +38,4 @@
     </div>
   <% end %>
 </div>
-</div>
+<%# </div> %>
