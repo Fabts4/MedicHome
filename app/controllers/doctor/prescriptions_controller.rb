@@ -27,10 +27,13 @@ class Doctor::PrescriptionsController < ApplicationController
       @prescription = Prescription.new
       @prescriptions = Prescription.where(doctor: current_user)
       render 'doctor/prescriptions/index', status: :unprocessable_entity
-    else
-      @prescription = Prescription.create(prescription_params.merge(doctor: current_user, date: Date.today))
-      redirect_to edit_doctor_prescription_path(@prescription)
     end
+
+    @prescription = Prescription.draft.find_by(patient_id: prescription_params[:patient_id])
+    if @prescription.nil?
+      @prescription = Prescription.create(prescription_params.merge(doctor: current_user, date: Date.today))
+    end
+    redirect_to edit_doctor_prescription_path(@prescription)
   end
 
   private
