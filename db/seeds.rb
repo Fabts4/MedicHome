@@ -7,6 +7,7 @@ filepath = "storage/items.csv"
 Doctor.destroy_all
 Patient.destroy_all
 Pharmacy.destroy_all
+Cart.destroy_all
 Item.destroy_all
 
 CSV.foreach(filepath, headers: :first_row) do |row|

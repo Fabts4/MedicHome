@@ -1,4 +1,39 @@
-<h1>Prescriptions#show</h1>
-<h2>ordonnance en cours</h2>
-<p><%= link_to "Voir les pharmas", prescription_pharmacies_path(params[:id])%></p>
+<div class="container p-5">
+  <h1>Ordonnance pour le patient <%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></h1>
 
+
+<div id="ordonnance">
+  <div id="flex-column">
+      <div id="flexblox-ordonance-top">
+          <div class="text-ordonance">
+              <p><%= @prescription.doctor.first_name %> <%= @prescription.doctor.last_name %></p>
+              <p>Médecin généraliste</p>
+              <p>Numéro RPPS : <%= @prescription.doctor.rpps  %></p>
+              <p><%= @prescription.doctor.address  %></p>
+          </div>
+          <div class="text-ordonance">
+              <p>Le <%= Date.today.strftime('%d/%m/%Y')  %></p>
+              <p><%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></p>
+              <p><%= @prescription.patient.address %></p>
+              <p><strong>N° SS : </strong><%= @prescription.patient.ssn %></p>
+              <p><strong>Mutuelle : </strong> <%= @prescription.patient.mutuelle_name %></p>
+              <p><strong>N° Mutuelle : </strong><%= @prescription.patient.mutuelle_number %></p>
+          </div>
+      </div>
+
+
+      <div id="div-posologie">
+        <% @prescription_items.sort.reverse!.each do |prescription_item| %>
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item mt-4"><p><strong><%= prescription_item.item.name %></strong></p></li>
+          </ul>
+          <p><%= prescription_item.item.desc %></p>
+          <p class= "mb-4"> <u>Posologie : <%= prescription_item.posology %></u> </p>
+        <% end %>
+      </div>
+  </div>
+  <div class="footer-ordonance">
+      <p><%= link_to "Choisir une pharmacie", prescription_pharmacies_path(params[:id]), class: "btn btn-primary"%></p>
+  </div>
+</div>
+</div>
