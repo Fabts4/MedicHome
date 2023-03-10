@@ -1,49 +1,84 @@
-<div class="container">
-  <h1>Prescriptions#edit</h1>
+<div class="container p-5">
+  <h1>Ordonnance pour le patient <%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></h1>
 
-<%= simple_form_for(@prescription_item, url: doctor_prescription_prescription_items_path(@prescription), method: 'POST') do |f| %>
-  <%= f.input :item_id, label: "Choisir un medicament", collection: @items %>
-  <%= f.input :posology, label: "Posologie", input_html: {value: 'bla'} %>
-  <%= f.submit 'Ajouter', class: "btn btn-primary" %>
-<% end %>
 
-<br>
-<br>
-  <div>
-    <p>Médecin :</p>
-    <p><%= @prescription.doctor.first_name %> <%= @prescription.doctor.last_name %></p>
-    <p>RPPS : <%= @prescription.doctor.rpps  %></p>
+<div id="ordonnance">
+  <div id="flex-column">
+      <div id="flexblox-ordonance-top">
+          <div class="text-ordonance">
+              <p><%= @prescription.doctor.first_name %> <%= @prescription.doctor.last_name %></p>
+              <p>Médecin généraliste</p>
+              <p>Numéro RPPS : <%= @prescription.doctor.rpps  %></p>
+              <p><%= @prescription.doctor.address  %></p>
+          </div>
+          <div class="text-ordonance">
+              <p>Le <%= Date.today.strftime('%d/%m/%Y')  %></p>
+              <p><%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></p>
+              <p><%= @prescription.patient.address %></p>
+              <p><strong>N° SS : </strong><%= @prescription.patient.ssn %></p>
+              <p><strong>Mutuelle : </strong> <%= @prescription.patient.mutuelle_name %></p>
+              <p><strong>N° Mutuelle : </strong><%= @prescription.patient.mutuelle_number %></p>
+          </div>
+      </div>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Newpresc">
+        Ajouter une prescription
+      </button>
+
+      <div id="div-posologie">
+        <% @prescription_items.sort.reverse!.each do |prescription_item| %>
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item mt-4"><p><strong><%= prescription_item.item.name %></strong></p></li>
+            <%= link_to doctor_prescription_item_path(prescription_item.id), class: "trash-link",data: {turbo_method: :delete, turbo_confirm: "Etes vous sur ?"} do %>
+              <li class="list-inline-item"><i class="fa-regular fa-trash-can"></i></li>
+            <% end  %>
+            <li class="list-inline-item"> <i class="fa-regular fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#Newpresc-<%= prescription_item.id %>"></i></li>
+          </ul>
+          <p><%= prescription_item.item.desc %></p>
+          <p class= "mb-4"> <u>Posologie : <%= prescription_item.posology %></u> </p>
+        <% end %>
+      </div>
   </div>
-<br>
-<br>
-  <div>
-    <p>Patient :</p>
-    <p><%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></p>
-    <p>Numéro de Sécurité sociale : <%= @prescription.patient.ssn  %></p>
-    <p>Mutuelle : <%= @prescription.patient.mutuelle_name %></p>
-    <p>Ref Mutuelle : <%= @prescription.patient.mutuelle_number %></p>
-  </div>
-
-  <br>
-  <br>
-    <div>
-      <p>Medocs prescrits :</p>
-      <% @prescription_items.each do |prescription_item| %>
-      <li>
-        <%= prescription_item.item.name %>
-        <%= prescription_item.item.desc %>
-        Posologie : <%= prescription_item.posology %>
-      </li>
+  <div class="footer-ordonance">
+      <a href="/doctor/prescriptions" class="boutton-white">Sauvegarder</a>
+      <%= link_to doctor_prescription_path(@prescription), data: {turbo_method: :patch} do %>
+      <button class="bn632-hover bn26">Transmettre</button>
       <% end %>
 
-    </div>
-
-<br>
-<br><br>
-<br><br>
-<br><br>
-<br>
-
-
+  </div>
+</div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="Newpresc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Choisir un médicament</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form_create', prescription: @prescription, prescription_item: @prescription_item, items: @items %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<% @prescription_items.each do |prescription_item| %>
+<div class="modal fade" id="Newpresc-<%= prescription_item.id %>"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Choisir un médicament</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form_update', prescription: @prescription, prescription_item: prescription_item, items: @items %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

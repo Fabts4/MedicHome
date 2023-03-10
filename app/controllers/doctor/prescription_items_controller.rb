@@ -11,9 +11,16 @@ class Doctor::PrescriptionItemsController < ApplicationController
   end
 
   def update
+    @prescription_item = PrescriptionItem.find(params[:id])
+    @prescription_item.update(item_params)
+    redirect_to edit_doctor_prescription_path
   end
 
   def destroy
+    @prescription_item = PrescriptionItem.find(params[:id])
+    @prescription = @prescription_item.prescription
+    @prescription_item.destroy
+    redirect_to edit_doctor_prescription_path(@prescription)
   end
 
   private
