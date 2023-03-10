@@ -44,7 +44,7 @@ export default class extends Controller {
   }
 
   #currentPosition() {
-    .geolocationavigatorn.getCurrentPosition(((success) => {
+    navigator.geolocation.getCurrentPosition(((success) => {
       const lng = success.coords.longitude
       const lat = success.coords.latitude
 
