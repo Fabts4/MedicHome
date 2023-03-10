@@ -1,4 +1,4 @@
-footer {
+.footer {
   background: #F4F4F4;
   display: flex;
   align-items: center;
@@ -6,6 +6,7 @@ footer {
   height: 100px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
+  bottom: 0;
 }
 .footer-links {
   display: flex;
