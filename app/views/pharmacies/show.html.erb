@@ -2,8 +2,7 @@
   <h1><%= @pharmacy.name %></h1>
   <p><strong>Address:</strong> <%= @pharmacy.address %></p>
 
-
-  <%= link_to "Commander", patient_prescriptions_path %>
+<%= link_to "Commander", patient_prescriptions_path %>
 <%#= link_to "Update cart(FOR ROUTE TEST)", cart_path(@cart), data: {turbo_method: :patch} %>
 
   <div class="checkout-card">
@@ -20,51 +19,51 @@
       <h3>Items</h3>
       <ul>
         <% @cart_items.each do |cart_item|%>
-          <li><%= cart_item.item.name %></li>
+          <%= cart_item.quantity %> x <%= cart_item.item.name %> - total : <%= cart_item.quantity * cart_item.item.price %> € <br>
         <% end %>
       </ul>
     </div>
     <hr>
-    <div class="checkout-section">
+    <div class="checkout-section" data-controller="total">
       <h3>Total</h3>
       <div class="delivery-option">
-        <input type="checkbox" id="delivery-checkbox" name="delivery-checkbox" value="yes">
+        <input type="checkbox" id="delivery-checkbox" name="delivery-checkbox" value="yes" data-action="change->total#updateTotal" data-total-target ="checkbox">
         <label for="delivery-checkbox">To be delivered? (5€)</label>
       </div>
-      <div class="total">
-        <% total = @cart.final_price %>
-        <% if params[:delivery_checkbox] == "yes" %>
-          <% total += 5 %>
-        <% end %>
-        <p>Total: <%= number_to_currency(total) %></p>
-      </div>
+        <button class="total-button">
+        <div class="total">
+          <p>Prix total: <span data-total-target="finalPrice"><%= @final_price %></span> €</p>
+        </div>
+      </button>
     </div>
   </div>
 
-  <h3>Liste des items</h3>
+
+    <h3>Liste des items</h3>
   <div class="product-cards">
     <% @parapharma.each do |para| %>
       <div class="product-card">
         <div class="product-photo">
-          <%= cl_image_tag para.photo.key, height: 150, width: 150, crop: :fit, class: "img-show" %>
+          <%= cl_image_tag para.photo.key, height: 100, width: 100, crop: :fit, class: "img-show" %>
         </div>
         <div class="product-details">
-          <h4><%= para.name %></h4>
+          <h4><strong><%= para.name %></strong> - <br> <%= para.price %> € l'unité </h4>
           <p><%= para.desc %></p>
         </div>
-        <div class="product-add">
+        <div class="product-add" data-controller="quantity">
           <% cart_item = CartItem.find_by(item: para, cart: @cart) %>
-          <div class="quantity">
-            <button class="decrement">-</button>
-            <input type="number" class="quantity-input" value="<%= cart_item.present? ? cart_item.quantity : 1 %>" min="1">
-            <button class="increment">+</button>
+          <div class="quantity"  >
+            <button class="decrement" data-action="click->quantity#decrement">-</button>
+            <input type="number" class="quantity-input" data-target="quantity.input" value="<%= cart_item.present? ? cart_item.quantity : 1 %>" min="1">
+            <button class="increment" data-action="click->quantity#increment">+</button>
           </div>
-          <% if cart_item.present? %>
-            <%= link_to "Update", cart_item_path(cart_item, quantity: 2), class: "update-button", data: { turbo_method: :patch } %>
-            <%= link_to "Remove", cart_item_path(cart_item), class: "remove-button", data: { turbo_method: :delete } %>
-          <% else %>
-            <%= link_to "Add", cart_cart_items_path(@cart, item_id: para.id, quantity: 1), class: "add-button", data: { turbo_method: :post } %>
-          <% end %>
+            <% if cart_item.present? %>
+              <%= link_to "Modifier", cart_item_path(cart_item, quantity: 1), class: "update-button", data: { turbo_method: :patch, action: 'click->quantity#updateQuantity', target: "quantity.link" } %>
+              <%= link_to "Supprimer", cart_item_path(cart_item), class: "remove-button", data: { turbo_method: :delete } %>
+            <% else %>
+            <%= link_to "Ajouter", cart_cart_items_path(@cart, item_id: para.id, quantity: 1), class: "add-button", data: { turbo_method: :post, action: 'click->quantity#updateQuantity' , target: "quantity.link" } %>
+            <% end %>
+            </div>
         </div>
       </div>
     <% end %>
