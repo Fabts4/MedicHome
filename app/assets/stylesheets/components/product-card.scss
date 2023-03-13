@@ -8,6 +8,8 @@
 .product-card {
   display: flex;
   margin-bottom: 10px;
+  margin-left: 10px ;
+  margin-right: 10px ;
   border: 1px solid #ddd;
   background-color: white;
   border-radius: 4px;
@@ -26,7 +28,10 @@
 .product-details {
     flex-grow: 1;
   h4 {
-    font-size: 1rem;
+    font-size: 0.7rem;
+  }
+  p {
+    font-size: 0.7rem;
   }
 }
 
@@ -39,13 +44,27 @@
   margin-bottom: 10px;
 }
 
+.product-add .increment {
+  background-color: transparent;
+  color: green;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.product-add .decrement {
+  background-color: transparent;
+  color: red;
+  font-size: 2em;
+  font-weight: bold;
+}
+
 /* Style the quantity counter */
 .quantity {
   display: flex;
   flex-direction: row;
   align-items: center;
   font-size: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 5px;
 }
 .quantity button {
   background: none;
@@ -71,5 +90,56 @@
 }
 
 .quantity input[type="number"] {
+  width: 30px;
+}
+
+// .buttons-container {
+//   display: flex;
+//   justify-content: flex-end;
+//   align-items: center;
+// }
+
+.update-button {
+  width: 45%;
+  background-color: green;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.remove-button {
+  width: 45%;
+  background-color: red;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  margin-right: 10px;
+  padding-right: 10px;
+}
+
+.quantity-input {
+  border: none;
   width: 40px;
+  text-align: center;
+}
+
+// .quantity-input {
+//   width: 50px;
+//   margin: 0 10px;
+//   text-align: center;
+// }
+
+/* Remove arrows from number input */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.quantity-input[type="number"] {
+  -moz-appearance: textfield;
 }
