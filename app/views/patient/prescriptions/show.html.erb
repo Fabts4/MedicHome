@@ -1,41 +1,42 @@
 <%# <div class="container"> %>
-  <h1 class="title_ordo_patient">Ordonnance pour le patient <%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></h1>
-
-
-<div id="ordonnance" class="patient_ordonnance">
-  <div id="flex-column">
-      <div id="flexblox-ordonance-top">
-          <div class="text-ordonance">
-              <p><%= @prescription.doctor.first_name %> <%= @prescription.doctor.last_name %></p>
-              <p>Médecin généraliste</p>
-              <p>Numéro RPPS : <%= @prescription.doctor.rpps  %></p>
-              <p><%= @prescription.doctor.address  %></p>
-          </div>
-          <div class="text-ordonance">
-              <p>Le <%= Date.today.strftime('%d/%m/%Y')  %></p>
-              <p><%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></p>
-              <p><%= @prescription.patient.address %></p>
-              <p><strong>N° SS : </strong><%= @prescription.patient.ssn %></p>
-              <p><strong>Mutuelle : </strong> <%= @prescription.patient.mutuelle_name %></p>
-              <p><strong>N° Mutuelle : </strong><%= @prescription.patient.mutuelle_number %></p>
-          </div>
-      </div>
-
-
-      <div id="div-posologie">
-        <% @prescription_items.sort.reverse!.each do |prescription_item| %>
-          <ul class="list-inline mb-0">
-            <li class="list-inline-item mt-4"><p><strong><%= prescription_item.item.name %></strong></p></li>
-          </ul>
-          <p><%= prescription_item.item.desc %></p>
-          <p class= "mb-4"> <u>Posologie : <%= prescription_item.posology %></u> </p>
-        <% end %>
-      </div>
-  </div>
-  <% if @prescription.sent? %>
-    <div class="footer-ordonance">
-        <p><%= link_to "Choisir une pharmacie", prescription_pharmacies_path(params[:id]), class: "btn btn-primary"%></p>
+<div class="container">
+  <h1 id="titre-page-ordo">Ordonnance en cours</h1>
+  <div class="flexbox-ordonnance-patient">
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+    <div class="text-ordo-patient">
+      <p id="DR">DR Philippe Knock</p>
+      <p>16 villa gaudelet, 750110 PARIS</p>
+      <p>numero RPPS: 6475903</p>
     </div>
-  <% end %>
-</div>
-<%# </div> %>
+  </div>
+  <p class="m">3 médicaments préscrits</p>
+  <div class="calendar">
+    <%= image_tag "icons8-planner-64", class: "avatar" %>
+    <p class="m">16/10/2022</p>
+  </div>
+  <div class="flex-centrage">
+    <div class="card-blue">
+      <div class="flex-ordonnace">
+        <p id="titre-medoc">Doliprane</p>
+        <div class="card-blue-t">
+          <div class="imgt">
+            <%= image_tag "icons8-pill-64", class: "avatar" %>
+          </div>
+          <p>solution buvable</p>
+        </div>
+        <div class="card-blue-tr">
+          <div class="imgt">
+            <%= image_tag "icons8-clock-64", class: "avatar" %>
+          </div>
+          <p>1  combiné une fois par jour</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-boutton">
+      <button class="bn632-hover bn26">Finaliser</button>
+  </div>
+
+
+
