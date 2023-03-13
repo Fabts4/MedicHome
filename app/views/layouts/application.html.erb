@@ -18,7 +18,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@1&display=swap" rel="stylesheet">
-      <link rel="shortcut icon" type="image/png" href="../../assets/images/medical.png"/>
+    <link rel="shortcut icon" type="image/png" href="../../assets/images/medical.png"/>
+
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title %>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:image" content="<%= meta_image %>">
+    <meta property="og:description" content="<%= meta_description %>">
+    <meta property="og:site_name" content="<%= meta_title %>">
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:title" content="<%= meta_title %>">
+    <meta name="twitter:description" content="<%= meta_description %>">
+    <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:image:src" content="<%= meta_image %>">
+
+    <%= favicon_link_tag "favicon.png", rel: "icon", type: "image/png" %>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <%# <link rel="manifest" href="<%= asset_path 'manifest.json' %>
+    <%#= render 'shared/ios_pwa_links' %>
   </head>
 
   <body>
@@ -35,7 +62,10 @@
     <%= render "shared/flashes" %>
 
     <%= yield %>
-    <%# <% if !current_user.doctor? %>
-        <%# <%= render "shared/footer" %>
-    <%# <% end %> 
+    <% if user_signed_in? %>
+    <% if !current_user.doctor? %>
+        <%= render "shared/footer" %>
+    <% end %>
+    <% end  %>
+  </body>
 </html>
