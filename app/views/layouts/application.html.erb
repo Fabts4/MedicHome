@@ -52,20 +52,18 @@
     <% if user_signed_in? %>
       <% if current_user.doctor? %>
         <%= render "shared/navbar" %>
-      <% else %>
-        <%= render "shared/navbar-user" %>
       <% end %>
-    <% else %>
-      <%= render "shared/navbar" %>
     <% end %>
 
     <%= render "shared/flashes" %>
 
     <%= yield %>
     <% if user_signed_in? %>
-    <% if !current_user.doctor? %>
-        <%= render "shared/footer" %>
-    <% end %>
+      <% if !current_user.doctor? %>
+        <%= render "shared/navbar-user" %>
+        <% else %>
+        <%= "render shared/footer" %>
+      <% end %>
     <% end  %>
   </body>
 </html>
