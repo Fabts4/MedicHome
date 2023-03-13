@@ -11,9 +11,36 @@
 .titre-ordonnances {
     text-align: center;
 }
-.card-ordonance-patient {
+/* .card-ordonance-patient {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+} */
+
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+
+  li {
+    width: 50%;
+    button {
+      width: 100%;
+      text-align: center;
+    }
+  }
 }
 
+li.nav-item .nav-link {
+  color: black;
+  &.active {
+      border-bottom: 5px solid #0073fe !important;
+      background-color: white !important;
+      border: none;
+      font-weight: 700;
+      color: black;
+  }
+}
+
+.tab-pane {
+  padding-top:25px;
+}
