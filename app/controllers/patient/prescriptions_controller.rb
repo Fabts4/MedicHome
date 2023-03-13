@@ -1,9 +1,9 @@
 class Patient::PrescriptionsController < ApplicationController
   def index
     @prescriptions = Prescription.where(patient: current_user)
-    @ordered_prescriptions = Prescription.filter_by_status("ordered")
-    @sent_prescriptions = Prescription.filter_by_status("sent")
-    @draft_prescriptions = Prescription.filter_by_status("draft")
+    @ordered_prescriptions = Prescription.ordered
+    @sent_prescriptions = Prescription.sent
+    @draft_prescriptions = Prescription.draft
   end
 
   def show

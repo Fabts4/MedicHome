@@ -1,5 +1,5 @@
 <%= simple_form_for(prescription_item, url: doctor_prescription_item_path(prescription_item)) do |f| %>
-  <%= f.input :item_id, label: "Choisir un medicament", collection: items %>
+  <%= f.input :item_id, label: "Médicament", collection: items, input_html: {data: {controller: "tom-select"}} %>
   <%= f.input :posology, label: "Posologie" %>
   <%= f.submit 'Ajouter', class: "btn btn-primary" %>
 <% end %>
