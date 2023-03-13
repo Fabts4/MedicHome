@@ -1,10 +1,45 @@
-.boutton-carré{
-    background: #83a4d4; /* fallback for old browsers */
-    background: #00c6ff; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #00c6ff, #0072ff); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #00c6ff, #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    width: 300px;
-    height: 300px;
-    border-radius: 10px;
-    margin-top: 50px;
+.boutton-carré {
+    // background: #2E5CBF; /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to right, #2E5CBF, #0072ff); /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to right, #2E5CBF, #0072ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 400px;
+  width: 400px;
+  border-radius: 25px;
+  background-color: #ffffff;
+  box-shadow: 8px 0 10px rgba(64, 145, 237, 0.5);
+  overflow: hidden;
+  text-decoration: none;
+
+    h2 {
+      color: #000000;
+      display: block;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-decoration: none;
+    }
+}
+
+
+.image-bouton-carré {
+  width: 81px;
+}
+
+
+.parent-flexbox:hover .boutton-carré {
+  filter: blur(3px);
+  transform: scale(0.9);
+  opactiy: 0.5;
+  transition: 0.9s;
+}
+
+.parent-flexbox .boutton-carré:hover {
+  filter: blur(0);
+  transform: scale(1.1);
+  opactiy: 1;
+  transition: 0.9s;
 }

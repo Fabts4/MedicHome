@@ -1,9 +1,11 @@
 .parent-flexbox {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 150px;
 }
 
-.modal-footer { 
+
+.modal-footer {
     display: flex;
     justify-content: center;
     a {
@@ -16,7 +18,7 @@
 }
 .modal-global {
     margin-top: 30vh;
-  
+
 }
 .input-modal {
     width: 80px;
@@ -25,15 +27,11 @@
 #prescription_patient_id {
     width: 90%;
 }
-.image-bouton-carré {
-    width: 81px;
-}
 
 .banner-img {
-   
     padding-top: 100px;
     padding-bottom: 300px;
-    background-image: asset-url("frame.jpg");
+    background-image: asset-url("Back-homepage.jpg");
     background-size: cover;
     background-position: center;
   }
