@@ -2,15 +2,12 @@
   <h1><%= @pharmacy.name %></h1>
   <p><strong>Address:</strong> <%= @pharmacy.address %></p>
 
-<%= link_to "Commander", patient_prescriptions_path %>
-<%#= link_to "Update cart(FOR ROUTE TEST)", cart_path(@cart), data: {turbo_method: :patch} %>
-
   <div class="checkout-card">
     <div class="checkout-section">
-      <h3>Medicaments de l'ordonnance</h3>
+      <h4>Ordonnance du Dr <%= @prescription.doctor.last_name %></h4>
       <ul>
         <% @drugs.each do |drug| %>
-          <li><%= drug.item.name %></li>
+          <li><%= drug.item.name.capitalize %></li>
         <% end %>
       </ul>
     </div>
@@ -19,7 +16,7 @@
       <h3>Items</h3>
       <ul>
         <% @cart_items.each do |cart_item|%>
-          <%= cart_item.quantity %> x <%= cart_item.item.name %> - total : <%= cart_item.quantity * cart_item.item.price %> € <br>
+          <%= cart_item.quantity %> x <%= cart_item.item.name %> - <%= cart_item.quantity * cart_item.item.price %> € <br>
         <% end %>
       </ul>
     </div>
@@ -30,11 +27,13 @@
         <input type="checkbox" id="delivery-checkbox" name="delivery-checkbox" value="yes" data-action="change->total#updateTotal" data-total-target ="checkbox">
         <label for="delivery-checkbox">To be delivered? (5€)</label>
       </div>
-        <button class="total-button">
-        <div class="total">
-          <p>Prix total: <span data-total-target="finalPrice"><%= @final_price %></span> €</p>
-        </div>
-      </button>
+        <%= link_to cart_path(@cart, price: @final_price, pharmacy: @pharmacy), data: {turbo_method: :patch} do %>
+          <button class="total-button">
+          <div class="total">
+            <p>Prix total: <span data-total-target="finalPrice"><%= @final_price %></span> €</p>
+          </div>
+        </button>
+        <% end %>
     </div>
   </div>
 
