@@ -35,8 +35,7 @@
     <%= render "shared/flashes" %>
 
     <%= yield %>
-    <% if !current_user.doctor? %>
-        <%= render "shared/footer" %>
-    <% end %>
-  </body>
+    <%# <% if !current_user.doctor? %>
+        <%# <%= render "shared/footer" %>
+    <%# <% end %> 
 </html>

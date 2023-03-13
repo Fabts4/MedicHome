@@ -8,9 +8,13 @@
 
 .banner-text h2 {
   color: #153B8C;
-  font-size: 55px;
-  font-weight: 400;
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
   margin-left: 260px;
+  margin-right: 0;
+  font-weight: bold;
 }
 
 .banner-text p {
@@ -23,7 +27,7 @@
 .banner-text {
   padding-top: 100px;
   padding-bottom: 300px;
-  background-image: image-url("background_homepage.jpg");
+  background-image: image-url("Back-homepage.jpg");
   background-size: cover;
   background-position: center;
 }
