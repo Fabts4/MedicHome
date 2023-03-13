@@ -13,7 +13,7 @@
     <% end %>
     <div class="flex-ul">
       <p><%= image_tag "icons8-manager-64", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
-      <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date %></p>
+      <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
     </div>
     <div class="div-link">
       <% if prescription.draft? %>

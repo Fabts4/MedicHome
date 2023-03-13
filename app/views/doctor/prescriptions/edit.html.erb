@@ -22,9 +22,12 @@
       </div>
 
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Newpresc">
-        Ajouter une prescription
+      <button type="button" class="add-medoc-button" data-bs-toggle="modal" data-bs-target="#Newpresc">
+        <%= image_tag "add_medoc_button" %> Ajouter une prescription
       </button>
+
+
+
 
       <div id="div-posologie">
         <% @prescription_items.sort.reverse!.each do |prescription_item| %>
