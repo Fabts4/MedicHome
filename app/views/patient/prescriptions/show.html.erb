@@ -1,36 +1,59 @@
 <%# <div class="container"> %>
 <div class="container">
   <h1 id="titre-page-ordo">Ordonnance en cours</h1>
-  <div class="flexbox-ordonnance-patient">
-    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-    <div class="text-ordo-patient">
-      <p id="DR">DR Philippe Knock</p>
-      <p>16 villa gaudelet, 750110 PARIS</p>
-      <p>numero RPPS: 6475903</p>
+
+  <div class="ordonnance-patient">
+    <%# contact médecin %>
+    <div class="flexbox-ordonnance-patient">
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+      <div class="text-ordo-patient">
+        <p id="DR">DR Philippe Knock</p>
+        <p>16 villa gaudelet, 750110 PARIS</p>
+        <p>numero RPPS: 6475903</p>
+        <div class="calendar">
+        <%= image_tag "icons8-planner-64" %>
+        <p>16/10/2022</p>
+      </div>
+      </div>
     </div>
-  </div>
-  <p class="m">3 médicaments préscrits</p>
-  <div class="calendar">
-    <%= image_tag "icons8-planner-64", class: "avatar" %>
-    <p class="m">16/10/2022</p>
-  </div>
-  <div class="flex-centrage">
-    <div class="card-blue">
-      <div class="flex-ordonnace">
-        <p id="titre-medoc">Doliprane</p>
-        <div class="card-blue-t">
-          <div class="imgt">
-            <%= image_tag "icons8-pill-64", class: "avatar" %>
-          </div>
+    <hr>
+    <%# médicaments %>
+    <p class="medoc-nb">3 médicaments préscrits</p>
+    <div class="medoc">
+      <p id="titre-medoc">Doliprane</p>
+      <div class="card-medoc">
+          <%= image_tag "icons8-pill-64"%>
           <p>solution buvable</p>
         </div>
-        <div class="card-blue-tr">
-          <div class="imgt">
-            <%= image_tag "icons8-clock-64", class: "avatar" %>
-          </div>
+        <div class="card-medoc">
+          <%= image_tag "icons8-clock-64"%>
           <p>1  combiné une fois par jour</p>
         </div>
-      </div>
+    </div>
+    <hr>
+    <div class="medoc">
+      <p id="titre-medoc">Doliprane</p>
+      <div class="card-medoc">
+          <%= image_tag "icons8-pill-64"%>
+          <p>solution buvable</p>
+        </div>
+        <div class="card-medoc">
+          <%= image_tag "icons8-clock-64"%>
+          <p>1  combiné une fois par jour</p>
+        </div>
+    </div>
+        <hr>
+
+    <div class="medoc">
+      <p id="titre-medoc">Doliprane</p>
+      <div class="card-medoc">
+          <%= image_tag "icons8-pill-64"%>
+          <p>solution buvable</p>
+        </div>
+        <div class="card-medoc">
+          <%= image_tag "icons8-clock-64"%>
+          <p>1  combiné une fois par jour</p>
+        </div>
     </div>
   </div>
 

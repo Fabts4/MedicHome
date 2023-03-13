@@ -25,16 +25,17 @@
   <% @prescriptions.sort.reverse!.each do |prescription|  %>
   <div class="card-ordonance">
     <% if prescription.draft? %>
-      <p> <i class="fa-solid fa-file-medical fa-xl"></i> <strong>Ordonnance à finaliser</strong> </p>
+      <p>  <%= image_tag "icons8-treatment-64", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
     <% else %>
-      <p> <i class="fa-solid fa-file-medical fa-xl"></i> Ordonnance émise</p>
+      <p> <%= image_tag "icons8-treatment-64", class: "avatar" %> Ordonnance émise</p>
     <% end %>
     <% if prescription.patient.photo.attached? %>
       <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
     <% end %>
     <div class="flex-ul">
-      <p><i class="fa-solid fa-person"></i> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
-      <p><i class="fa-regular fa-calendar"></i> <%= prescription.date %></p>
+    
+      <p><%= image_tag "icons8-manager-64", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
+      <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date %></p>
     </div>
     <div class="div-link">
       <% if prescription.draft? %>
