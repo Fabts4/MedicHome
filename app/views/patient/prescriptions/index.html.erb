@@ -1,7 +1,4 @@
-
-
-<h1>Medichome</h1>
-<h2>Ordonnances</h2>
+<h1 class="text-center mt-2">Ordonnances</h1>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
@@ -19,10 +16,12 @@
     <% @sent_prescriptions.sort.reverse!.each do |prescription|  %>
 
       <%= link_to  patient_prescription_path(prescription), class: "card-ordonnance-patient" do %>
-          <p class="ordonnance-date"><%= prescription.date %></p>
+          <p class="ordonnance-date"> Ordonnance du <%= prescription.date.strftime('%d/%m/%Y') %></p>
           <div class="ordonnance-doctor">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-            <p><%= prescription.doctor.first_name %><%= prescription.doctor.last_name %></p>
+            <% if prescription.doctor.photo.attached? %>
+              <%= cl_image_tag prescription.doctor.photo.key, class: "avatar" %>
+            <% end  %>
+            <p><%= prescription.doctor.first_name %> <%= prescription.doctor.last_name %></p>
           </div>
       <% end %>
     <% end %>
@@ -32,10 +31,12 @@
   <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <% @ordered_prescriptions.sort.reverse!.each do |prescription|  %>
       <%= link_to  patient_prescription_path(prescription), class: "card-ordonnance-patient" do %>
-          <p class="ordonnance-date"><%= prescription.date %></p>
+          <p class="ordonnance-date"> Ordonnance du <%= prescription.date.strftime('%d/%m/%Y')   %></p>
           <div class="ordonnance-doctor">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-            <p><%= prescription.doctor.first_name %><%= prescription.doctor.last_name %></p>
+            <% if prescription.doctor.photo.attached? %>
+              <%= cl_image_tag prescription.doctor.photo.key, class: "avatar" %>
+            <% end  %>
+            <p><%= prescription.doctor.first_name %> <%= prescription.doctor.last_name %></p>
           </div>
       <% end %>
     <% end %>

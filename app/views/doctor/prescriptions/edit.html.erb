@@ -22,9 +22,12 @@
       </div>
 
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Newpresc">
-        Ajouter une prescription
+      <button type="button" class="add-medoc-button" data-bs-toggle="modal" data-bs-target="#Newpresc">
+        <%= image_tag "add_medoc_button" %> Ajouter une prescription
       </button>
+
+
+
 
       <div id="div-posologie">
         <% @prescription_items.sort.reverse!.each do |prescription_item| %>
@@ -41,7 +44,7 @@
       </div>
   </div>
   <div class="footer-ordonance">
-      <a href="/doctor/prescriptions" class="boutton-white">Sauvegarder</a>
+      <a href="/doctor/prescriptions" class="btn-gris btn btn-outline-secondary mb-3">Sauvegarder</a>
       <%= link_to doctor_prescription_path(@prescription), data: {turbo_method: :patch} do %>
       <button class="bn632-hover bn26">Transmettre</button>
       <% end %>
@@ -53,7 +56,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="Newpresc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Choisir un médicament</h1>
@@ -69,10 +72,10 @@
 
 <% @prescription_items.each do |prescription_item| %>
 <div class="modal fade" id="Newpresc-<%= prescription_item.id %>"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Choisir un médicament</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier un médicament</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">

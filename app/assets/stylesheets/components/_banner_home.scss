@@ -1,20 +1,24 @@
 
 .banner-text h1 {
-  color: #153B8C;
+  color: #0D5282;
   font-size: 96px;
   font-weight: 700;
   justify-content: center;
 }
 
 .banner-text h2 {
-  color: #153B8C;
-  font-size: 55px;
-  font-weight: 400;
+  color: #0488E3;
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
   margin-left: 260px;
+  margin-right: 0;
+  font-weight: bold;
 }
 
 .banner-text p {
-  color: #153B8C;
+  color: #0488E3;
   margin-left: 260px;
   font-weight: 280;
   opacity: 0.7;
@@ -23,7 +27,7 @@
 .banner-text {
   padding-top: 100px;
   padding-bottom: 300px;
-  background-image: image-url("background_homepage.jpg");
+  background-image: image-url("Back-homepage.jpg");
   background-size: cover;
   background-position: center;
 }

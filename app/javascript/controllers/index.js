@@ -15,3 +15,6 @@ application.register("quantity", QuantityController)
 
 import TotalController from "./total_controller"
 application.register("total", TotalController)
+
+import TomSelectController from "./tom_select_controller"
+application.register("tom-select", TomSelectController)
