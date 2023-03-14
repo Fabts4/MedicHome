@@ -4,7 +4,7 @@
   border: grey;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  margin: 20px;
+  margin-bottom: 20px;
 }
 
 .checkout-section {
@@ -27,15 +27,21 @@
 .add-button, .update-button, .remove-button {
   display: inline-block;
   padding: 5px 10px;
-  background-color: #007bff;
+  // background-color: #1f4874;
   color: #fff;
   border-radius: 5px;
   text-decoration: none;
-  margin-right: 10px;
+  font-size: 15px;
+  flex-grow: 1;
+  background: transparent;
+  color: #1f4874;
+  border: 2px solid #1f4874;
+  font-weight: 700;
+/*   margin-right: 10px; */
 }
 
 .add-button:hover, .update-button:hover, .remove-button:hover {
-  background-color: #0062cc;
+  // background-color: #0062cc;
 }
 
 .delivery-option {
