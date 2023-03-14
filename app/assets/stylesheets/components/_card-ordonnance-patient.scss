@@ -1,60 +1,57 @@
 .card-ordonance-patient {
-    width: 81%;
-    min-height: 257px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  width: 81%;
+  min-height: 257px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-    max-width: 500px;
-    height: 100%;
-    padding: 20px;
-    margin: 0 auto;
+  max-width: 500px;
+  height: 100%;
+  padding: 20px;
 
-    border: 1px solid rgba(255, 255, 255, .25);
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.45);
-    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
 
-    backdrop-filter: blur(15px);
-    margin: 0 auto;
-    margin-bottom: 63px;
+  backdrop-filter: blur(15px);
+  margin: 0 auto;
+  margin-bottom: 63px;
 
-    p {
-        margin: 0;
-    }
-    a {
-        text-decoration: none;
-        color: white;
-    }
+  p {
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
 
+.card-ordonnance-patient {
+  background: white;
+  box-shadow: 2px 2px 6px #4e4e4e4d;
+  display: block;
+  margin-bottom: 15px;
+  text-decoration: none;
+  width: 90%;
+  margin: 0 auto 25px;
+  border-radius: 5px;
+  color: rgb(26, 26, 26);
+  padding: 10px;
+  p {
+    margin-bottom: 0;
   }
 
+  .ordonnance-doctor {
+    display: flex;
+    align-items: center;
+  }
 
-  .card-ordonnance-patient {
-    background: white;
-    box-shadow: 2px 2px 6px #4e4e4e4d;
-    display: block;
-    margin-bottom: 15px;
-    text-decoration: none;
-    width: 90%;
-    margin: 0 auto 25px;
-    border-radius: 5px;
-    color: rgb(26, 26, 26);
-    padding: 10px;
-    p {
-      margin-bottom: 0;
-    }
-
-    .ordonnance-doctor {
-      display: flex;
-      align-items: center;
-    }
-
-    img {
-      margin-bottom: 0;
-      position: relative;
-      margin-right: 10px;
-    }
+  img {
+    margin-bottom: 0;
+    position: relative;
+    margin-right: 10px;
+  }
 }
 
 .tab-pane {
