@@ -1,7 +1,8 @@
 class Doctor::PrescriptionsController < ApplicationController
   def index
     @prescription = Prescription.new
-    @prescriptions = Prescription.where(doctor: current_user)
+    @sent_prescriptions = Prescription.where(doctor: current_user, status: [1, 2])
+    @pending_prescriptions = Prescription.draft.where(doctor: current_user)
   end
 
   def show

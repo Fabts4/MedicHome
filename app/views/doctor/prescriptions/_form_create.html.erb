@@ -1,5 +1,14 @@
-<%= simple_form_for(prescription_item, url: doctor_prescription_prescription_items_path(prescription)) do |f| %>
+<%= simple_form_for :presc, url: doctor_prescription_prescription_items_path(prescription), method: :post do |f| %>
   <%= f.input :item_id, label: "Médicament", collection: items, input_html: {data: {controller: "tom-select"}} %>
-  <%= f.input :posology, label: "Posologie", input_html: {value: '... fois par jour pendant ... jours'} %>
+  <%#= f.input :posology, label: "Posologie", input_html: {value: '... fois par jour pendant ... jours'} %>
+  <h3>Posologie</h3>
+  <div class="posologie">
+    <%= f.input :quantity1, label: "Posologie" %>
+    <p>fois par</p>
+    <%= f.input :frequency1, label: "", collection: ["jour", "semaine"] %>
+    <p>pendant</p>
+    <%= f.input :quantity2, label: ""%>
+    <%= f.input :frequency2, label: "", collection: ["jours", "semaines"] %>
+  </div>
   <%= f.submit 'Ajouter', class: "btn btn-primary" %>
 <% end %>

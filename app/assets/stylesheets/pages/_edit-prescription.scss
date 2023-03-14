@@ -3,3 +3,41 @@
   background-color: white;
 
 }
+
+.posologie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  > div {
+    display: flex;
+    margin-bottom: 0 !important;
+
+    + p {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin: 0;
+      color: #5a5a5a;
+    }
+  }
+
+  label.required {
+    display: none;
+  }
+
+  #presc_quantity1, #presc_quantity2 {
+    width: 100px;
+  }
+
+  div[class*="presc_frequency"] {
+    width: 160px;
+
+  }
+
+  select, input.string {
+    background-color: white;
+    border: none;
+    border-bottom: 1px dashed;
+    border-radius: 0;
+  }
+}
