@@ -1,64 +1,79 @@
-<h1 class="titre-page">Mes dernières ordonnances</h1>
-</div>
 <div class="container">
+  <h2 class="titre-page">Mes dernières ordonnances</h2>
 
-  <div id="doctor-prescriptions">
-    <% @prescriptions.sort.reverse!.each do |prescription|  %>
-    <div class="card-ordonance">
-      <% if prescription.draft? %>
-        <p>  <%= image_tag "icons8-treatment-64", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
-      <% else %>
-        <p> <%= image_tag "icons8-treatment-64", class: "avatar" %> Ordonnance émise</p>
-      <% end %>
-      <% if prescription.patient.photo.attached? %>
-        <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
-      <% end %>
-      <div class="flex-ul">
-        <p><%= image_tag "icons8-manager-64", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
-        <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
-      </div>
-      <div class="div-link">
-        <% if prescription.draft? %>
-          <%= link_to edit_doctor_prescription_path(prescription) do %>
-            <button class="bn632-hover bn26">Finaliser</button>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button" role="tab" aria-controls="pending-tab-pane" aria-selected="true">A finaliser</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="sent-tab" data-bs-toggle="tab" data-bs-target="#sent" type="button" role="tab" aria-controls="sent-tab-pane" aria-selected="false">Transmises</button>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+
+    <div class="tab-pane fade show active" id="pending" role="tabpanel" aria-labelledby="pending-tab" tabindex="0">
+      <div id="doctor-prescriptions">
+        <% @pending_prescriptions.sort.reverse!.each do |prescription|  %>
+        <div class="card-ordonance">
+          <% if prescription.draft? %>
+            <p>  <%= image_tag "icons8-treatment-64", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
+          <% else %>
+            <p> <%= image_tag "icons8-treatment-64", class: "avatar" %> Ordonnance émise</p>
           <% end %>
-        <% else %>
-          <%= link_to doctor_prescription_path(prescription) do %>
-            <button class="bn632-hover bn26">Consulter</button>
+          <% if prescription.patient.photo.attached? %>
+            <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
           <% end %>
+          <div class="flex-ul">
+            <p><%= image_tag "icons8-manager-64", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
+            <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
+          </div>
+          <div class="div-link">
+            <% if prescription.draft? %>
+              <%= link_to edit_doctor_prescription_path(prescription) do %>
+                <button class="bn632-hover bn26">Finaliser</button>
+              <% end %>
+            <% else %>
+              <%= link_to doctor_prescription_path(prescription) do %>
+                <button class="bn632-hover bn26">Consulter</button>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
         <% end %>
       </div>
     </div>
-    <% end %>
+
+    <div class="tab-pane fade active" id="sent" role="tabpanel" aria-labelledby="sent-tab" tabindex="0">
+      <div id="doctor-prescriptions">
+        <% @sent_prescriptions.sort.reverse!.each do |prescription|  %>
+        <div class="card-ordonance">
+          <% if prescription.draft? %>
+            <p>  <%= image_tag "icons8-treatment-64", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
+          <% else %>
+            <p> <%= image_tag "icons8-treatment-64", class: "avatar" %> Ordonnance émise</p>
+          <% end %>
+          <% if prescription.patient.photo.attached? %>
+            <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
+          <% end %>
+          <div class="flex-ul">
+            <p><%= image_tag "icons8-manager-64", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
+            <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
+          </div>
+          <div class="div-link">
+            <% if prescription.draft? %>
+              <%= link_to edit_doctor_prescription_path(prescription) do %>
+                <button class="bn632-hover bn26">Finaliser</button>
+              <% end %>
+            <% else %>
+              <%= link_to doctor_prescription_path(prescription) do %>
+                <button class="bn632-hover bn26">Consulter</button>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
-<!-- Modal -->
-<div class="modal-global modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Sélectionner le patient:</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Search bar à coder
-      </div>
-      <div class="modal-footer">
-        <a href="#"class="btn-modal">Choisir</a>
-      </div>
-    </div>
-    <div class="card-ordonance">
-      <p>Ordonance déjà transmise</p>
-      <p class="card-footer">Created by Rahul C.</p>
-    </div>
-    <div class="card-ordonance">
-      <p>Ordonance déjà transmise</p>
-      <p class="card-footer">Created by Rahul C.</p>
-    </div>
-    <div class="card-ordonance">
-      <p>Ordonance déjà transmise</p>
-      <p class="card-footer">Created by Rahul C.</p>
-    </div>
-  </div>
-<div>
-
