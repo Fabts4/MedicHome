@@ -1,86 +1,88 @@
-<h1>Mes dernières ordonnances</h1>
+  <h1 class="titre-page">Mes dernières ordonnances</h1>
+<div class="container">
 
-<!-- Button trigger modal -->
+  <!-- Button trigger modal -->
 
-<!-- Modal -->
-<div class="modal fade" id="UserChoiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Choisir un patient</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
-          <%= f.input :patient_id, collection: Patient.simple_form_collection %>
-          <%= f.submit 'Commencer', class: "btn btn-primary" %>
-        <% end %>
+  <!-- Modal -->
+  <div class="modal fade" id="UserChoiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Choisir un patient</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
+            <%= f.input :patient_id, collection: Patient.simple_form_collection %>
+            <%= f.submit 'Commencer', class: "btn btn-primary" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
-<div id="flexbox-centrage">
-  <% @prescriptions.sort.reverse!.each do |prescription|  %>
-  <div class="card-ordonance">
-    <% if prescription.draft? %>
-      <p>  <%= image_tag "icons8-treatment-64", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
-    <% else %>
-      <p> <%= image_tag "icons8-treatment-64", class: "avatar" %> Ordonnance émise</p>
-    <% end %>
-    <% if prescription.patient.photo.attached? %>
-      <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
-    <% end %>
-    <div class="flex-ul">
-    
-      <p><%= image_tag "icons8-manager-64", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
-      <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date %></p>
-    </div>
-    <div class="div-link">
+  <div id="doctor-prescriptions">
+    <% @prescriptions.sort.reverse!.each do |prescription|  %>
+    <div class="card-ordonance">
       <% if prescription.draft? %>
-        <%= link_to edit_doctor_prescription_path(prescription) do %>
-          <button class="bn632-hover bn26">Finaliser</button>
-        <% end %>
+        <p>  <%= image_tag "icons8-treatment-64", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
       <% else %>
-        <%= link_to doctor_prescription_path(prescription) do %>
-          <button class="bn632-hover bn26">Consulter</button>
-        <% end %>
+        <p> <%= image_tag "icons8-treatment-64", class: "avatar" %> Ordonnance émise</p>
       <% end %>
+      <% if prescription.patient.photo.attached? %>
+        <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
+      <% end %>
+      <div class="flex-ul">
+      
+        <p><%= image_tag "icons8-manager-64", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
+        <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date %></p>
+      </div>
+      <div class="div-link">
+        <% if prescription.draft? %>
+          <%= link_to edit_doctor_prescription_path(prescription) do %>
+            <button class="bn632-hover bn26">Finaliser</button>
+          <% end %>
+        <% else %>
+          <%= link_to doctor_prescription_path(prescription) do %>
+            <button class="bn632-hover bn26">Consulter</button>
+          <% end %>
+        <% end %>
+      </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
 
-<!-- Modal -->
-<div class="modal-global modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Sélectionner le patient:</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Search bar à coder
-      </div>
-      <div class="modal-footer">
-        <a href="#"class="btn-modal">Choisir</a>
+  <!-- Modal -->
+  <div class="modal-global modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Sélectionner le patient:</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Search bar à coder
+        </div>
+        <div class="modal-footer">
+          <a href="#"class="btn-modal">Choisir</a>
+        </div>
       </div>
     </div>
+    <div class="card-ordonance">
+      <p>Ordonance déjà transmise</p>
+      <p class="card-footer">Created by Rahul C.</p>
+    </div>
+    <div class="card-ordonance">
+      <p>Ordonance déjà transmise</p>
+      <p class="card-footer">Created by Rahul C.</p>
+    </div>
+    <div class="card-ordonance">
+      <p>Ordonance déjà transmise</p>
+      <p class="card-footer">Created by Rahul C.</p>
+    </div>
   </div>
-  <div class="card-ordonance">
-    <p>Ordonance déjà transmise</p>
-    <p class="card-footer">Created by Rahul C.</p>
-  </div>
-  <div class="card-ordonance">
-    <p>Ordonance déjà transmise</p>
-    <p class="card-footer">Created by Rahul C.</p>
-  </div>
-  <div class="card-ordonance">
-    <p>Ordonance déjà transmise</p>
-    <p class="card-footer">Created by Rahul C.</p>
-  </div>
-</div>
+<div>
 
 
 <%# hello %>
