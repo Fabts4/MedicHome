@@ -1,7 +1,7 @@
 require "csv"
 require "open-uri"
 
-filepath = "storage/drugs.csv"
+filepath = "storage/drugsv2.csv"
 
 # Prescription.destroy_all
 Doctor.destroy_all
