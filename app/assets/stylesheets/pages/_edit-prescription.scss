@@ -9,6 +9,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+  width: 80%;
   > div {
     display: flex;
     margin-bottom: 0 !important;
@@ -26,7 +27,7 @@
   }
 
   #presc_quantity1, #presc_quantity2 {
-    width: 100px;
+    width: 55px;
   }
 
   div[class*="presc_frequency"] {
@@ -40,4 +41,8 @@
     border-bottom: 1px dashed;
     border-radius: 0;
   }
+}
+
+.poso-title {
+  margin-bottom: 0.5em;
 }
