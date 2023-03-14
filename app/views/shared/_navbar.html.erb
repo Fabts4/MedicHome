@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to doctor_home_path, class: "navbar-brand" do %>
-      <%= image_tag "medical.png" %>
+      <%= image_tag "logo.png" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,9 +11,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", doctor_home_path, class: "nav-link" %>
-          </li>
           <li class="nav-item">
             <p class="nav-link">Bienvenue <%= current_user.first_name%> <%= current_user.last_name%></p>
             <%=  %>

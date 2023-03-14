@@ -1,9 +1,3 @@
-h1 {
-    text-align: center;
-    font-family: 'Fredoka One', cursive;
-    margin-top: 16px;
-    margin-bottom: 16px;
-}
 
 .link-to {
     text-decoration: none;
@@ -21,4 +15,17 @@ h1 {
 
 .kill-margin {
     margin: 0;
+}
+
+#doctor-prescriptions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .card-ordonance {
+
+        margin: 10px auto 30px ;
+        width: 30%;
+    }
+    
 }

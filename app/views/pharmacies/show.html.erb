@@ -1,6 +1,6 @@
-<div class="" style="padding: 0px 15px;">
+<div class="container">
   <h1><%= @pharmacy.name %></h1>
-  <p><strong>Address:</strong> <%= @pharmacy.address %></p>
+  <p class="pharmacie-address"><i class="fa-solid fa-location-dot"></i> <%= @pharmacy.address %></p>
 
   <div class="checkout-card">
     <div class="checkout-section">
@@ -13,10 +13,15 @@
     </div>
     <hr>
     <div class="checkout-section">
-      <h3>Items</h3>
+      <h3>Parapharmacie</h3>
       <ul>
         <% @cart_items.each do |cart_item|%>
-          <%= cart_item.quantity %> x <%= cart_item.item.name %> - <%= cart_item.quantity * cart_item.item.price %> € <br>
+          <li>
+          <%= cart_item.quantity %> x <%= cart_item.item.name %> - <%= cart_item.quantity * cart_item.item.price %> €
+          <%= link_to cart_item_path(cart_item), data: { turbo_method: :delete } do %>
+            <i class="fa-regular fa-trash-can"></i>
+          </li>
+          <% end  %>
         <% end %>
       </ul>
     </div>
@@ -27,42 +32,46 @@
         <input type="checkbox" id="delivery-checkbox" name="delivery-checkbox" value="yes" data-action="change->total#updateTotal" data-total-target ="checkbox">
         <label for="delivery-checkbox">To be delivered? (5€)</label>
       </div>
-        <%= link_to cart_path(@cart, price: @final_price, pharmacy: @pharmacy), data: {turbo_method: :patch} do %>
-          <button class="total-button">
+      <%= link_to cart_path(@cart, price: @final_price, pharmacy: @pharmacy), data: {turbo_method: :patch} do %>
+        <button class="total-button">
           <div class="total">
             <p>Prix total: <span data-total-target="finalPrice"><%= @final_price %></span> €</p>
           </div>
         </button>
-        <% end %>
+      <% end %>
     </div>
   </div>
 
 
-    <h3>Liste des items</h3>
+  <h3>Parapharmacie</h3>
   <div class="product-cards">
     <% @parapharma.each do |para| %>
       <div class="product-card">
         <div class="product-photo">
           <%= cl_image_tag para.photo.key, height: 100, width: 100, crop: :fit, class: "img-show" %>
         </div>
-        <div class="product-details">
-          <h4><strong><%= para.name %></strong> - <br> <%= para.price %> € l'unité </h4>
-          <p><%= para.desc %></p>
-        </div>
-        <div class="product-add" data-controller="quantity">
-          <% cart_item = CartItem.find_by(item: para, cart: @cart) %>
-          <div class="quantity"  >
-            <button class="decrement" data-action="click->quantity#decrement">-</button>
-            <input type="number" class="quantity-input" data-target="quantity.input" value="<%= cart_item.present? ? cart_item.quantity : 1 %>" min="1">
-            <button class="increment" data-action="click->quantity#increment">+</button>
+        <div class="product-info">
+          <div class="product-details">
+            <h4><strong><%= para.name %></strong> - <br> <%= para.price %> € l'unité </h4>
+            <p><%= para.desc %></p>
           </div>
+          <div class="product-add" data-controller="quantity">
+          <% cart_item = CartItem.find_by(item: para, cart: @cart) %>
+            <div class="quantity"  >
+              <button class="decrement" data-action="click->quantity#decrement">
+                <i class="fa-solid fa-minus"></i>
+              </button>
+                <input type="number" class="quantity-input" data-target="quantity.input" value="<%= cart_item.present? ? cart_item.quantity : 1 %>" min="1">
+              <button class="increment" data-action="click->quantity#increment">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
             <% if cart_item.present? %>
               <%= link_to "Modifier", cart_item_path(cart_item, quantity: 1), class: "update-button", data: { turbo_method: :patch, action: 'click->quantity#updateQuantity', target: "quantity.link" } %>
-              <%= link_to "Supprimer", cart_item_path(cart_item), class: "remove-button", data: { turbo_method: :delete } %>
             <% else %>
-            <%= link_to "Ajouter", cart_cart_items_path(@cart, item_id: para.id, quantity: 1), class: "add-button", data: { turbo_method: :post, action: 'click->quantity#updateQuantity' , target: "quantity.link" } %>
+              <%= link_to "Ajouter", cart_cart_items_path(@cart, item_id: para.id, quantity: 1), class: "add-button", data: { turbo_method: :post, action: 'click->quantity#updateQuantity' , target: "quantity.link" } %>
             <% end %>
-            </div>
+          </div>
         </div>
       </div>
     <% end %>
