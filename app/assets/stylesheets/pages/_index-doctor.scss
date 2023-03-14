@@ -1,8 +1,12 @@
-h1 {
+.titre-page {
     text-align: center;
     font-family: 'Fredoka One', cursive;
-    margin-top: 16px;
-    margin-bottom: 16px;
+    margin-top: 32px;
+    margin-bottom: 70px;
+    color: #0688E4;
+    font-size: 80px;
+    font-weight: 700;
+    letter-spacing: 4px;
 }
 
 .link-to {
@@ -21,4 +25,17 @@ h1 {
 
 .kill-margin {
     margin: 0;
+}
+
+#doctor-prescriptions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .card-ordonance {
+
+        margin: 10px auto 30px ;
+        width: 30%;
+    }
+    
 }
