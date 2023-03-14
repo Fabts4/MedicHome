@@ -1,26 +1,5 @@
 <h1>Mes dernières ordonnances</h1>
 
-<!-- Button trigger modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="UserChoiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Choisir un patient</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
-          <%= f.input :patient_id, collection: Patient.simple_form_collection %>
-          <%= f.submit 'Commencer', class: "btn btn-primary" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <div id="flexbox-centrage">
   <% @prescriptions.sort.reverse!.each do |prescription|  %>
   <div class="card-ordonance">
@@ -33,9 +12,8 @@
       <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
     <% end %>
     <div class="flex-ul">
-    
       <p><%= image_tag "icons8-manager-64", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
-      <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date %></p>
+      <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
     </div>
     <div class="div-link">
       <% if prescription.draft? %>
@@ -51,7 +29,6 @@
   </div>
   <% end %>
 </div>
-
 <!-- Modal -->
 <div class="modal-global modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -82,5 +59,3 @@
   </div>
 </div>
 
-
-<%# hello %>
