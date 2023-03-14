@@ -1,33 +1,36 @@
-<h1>Mes dernières ordonnances</h1>
+<h1 class="titre-page">Mes dernières ordonnances</h1>
+</div>
+<div class="container">
 
-<div id="flexbox-centrage">
-  <% @prescriptions.sort.reverse!.each do |prescription|  %>
-  <div class="card-ordonance">
-    <% if prescription.draft? %>
-      <p>  <%= image_tag "icons8-treatment-64", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
-    <% else %>
-      <p> <%= image_tag "icons8-treatment-64", class: "avatar" %> Ordonnance émise</p>
-    <% end %>
-    <% if prescription.patient.photo.attached? %>
-      <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
-    <% end %>
-    <div class="flex-ul">
-      <p><%= image_tag "icons8-manager-64", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
-      <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
-    </div>
-    <div class="div-link">
+  <div id="doctor-prescriptions">
+    <% @prescriptions.sort.reverse!.each do |prescription|  %>
+    <div class="card-ordonance">
       <% if prescription.draft? %>
-        <%= link_to edit_doctor_prescription_path(prescription) do %>
-          <button class="bn632-hover bn26">Finaliser</button>
-        <% end %>
+        <p>  <%= image_tag "icons8-treatment-64", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
       <% else %>
-        <%= link_to doctor_prescription_path(prescription) do %>
-          <button class="bn632-hover bn26">Consulter</button>
-        <% end %>
+        <p> <%= image_tag "icons8-treatment-64", class: "avatar" %> Ordonnance émise</p>
       <% end %>
+      <% if prescription.patient.photo.attached? %>
+        <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
+      <% end %>
+      <div class="flex-ul">
+        <p><%= image_tag "icons8-manager-64", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
+        <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
+      </div>
+      <div class="div-link">
+        <% if prescription.draft? %>
+          <%= link_to edit_doctor_prescription_path(prescription) do %>
+            <button class="bn632-hover bn26">Finaliser</button>
+          <% end %>
+        <% else %>
+          <%= link_to doctor_prescription_path(prescription) do %>
+            <button class="bn632-hover bn26">Consulter</button>
+          <% end %>
+        <% end %>
+      </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
 <!-- Modal -->
 <div class="modal-global modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -44,18 +47,18 @@
         <a href="#"class="btn-modal">Choisir</a>
       </div>
     </div>
+    <div class="card-ordonance">
+      <p>Ordonance déjà transmise</p>
+      <p class="card-footer">Created by Rahul C.</p>
+    </div>
+    <div class="card-ordonance">
+      <p>Ordonance déjà transmise</p>
+      <p class="card-footer">Created by Rahul C.</p>
+    </div>
+    <div class="card-ordonance">
+      <p>Ordonance déjà transmise</p>
+      <p class="card-footer">Created by Rahul C.</p>
+    </div>
   </div>
-  <div class="card-ordonance">
-    <p>Ordonance déjà transmise</p>
-    <p class="card-footer">Created by Rahul C.</p>
-  </div>
-  <div class="card-ordonance">
-    <p>Ordonance déjà transmise</p>
-    <p class="card-footer">Created by Rahul C.</p>
-  </div>
-  <div class="card-ordonance">
-    <p>Ordonance déjà transmise</p>
-    <p class="card-footer">Created by Rahul C.</p>
-  </div>
-</div>
+<div>
 
