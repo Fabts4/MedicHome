@@ -1,65 +1,56 @@
-<%# <div class="container"> %>
 <div class="container">
   <h1 id="titre-page-ordo">Ordonnance en cours</h1>
 
   <div class="ordonnance-patient">
     <%# contact médecin %>
     <div class="flexbox-ordonnance-patient">
-      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+      <% if @prescription.doctor.photo.attached? %>
+        <%= cl_image_tag @prescription.doctor.photo.key, class: "avatar" %>
+      <% else  %>
+        <%= image_tag "", class: "avatar" %>
+      <% end %>
       <div class="text-ordo-patient">
-        <p id="DR">DR Philippe Knock</p>
-        <p>16 villa gaudelet, 750110 PARIS</p>
-        <p>numero RPPS: 6475903</p>
+        <p id="DR"><%= @prescription.doctor.first_name %> <%= @prescription.doctor.last_name %></p>
+        <p>Médecin généraliste</p>
+        <p><%= @prescription.doctor.address %></p>
+        <p>Numéro RPPS: <%= @prescription.doctor.rpps  %></p>
         <div class="calendar">
         <%= image_tag "icons8-planner-64" %>
-        <p>16/10/2022</p>
+        <p><%= @prescription.date.strftime('%d/%m/%Y') %></p>
       </div>
       </div>
     </div>
     <hr>
     <%# médicaments %>
-    <p class="medoc-nb">3 médicaments préscrits</p>
-    <div class="medoc">
-      <p id="titre-medoc">Doliprane</p>
-      <div class="card-medoc">
-          <%= image_tag "icons8-pill-64"%>
-          <p>solution buvable</p>
-        </div>
+
+    <p class="medoc-nb"> <%= @prescription.prescription_items.count %> <%= "médicament".pluralize(@prescription.prescription_items.count) %> <%= "prescrit".pluralize(@prescription.prescription_items.count) %></p>
+
+    <% @prescription_items.sort.reverse!.each do |prescription_item| %>
+      <div class="medoc">
+        <p id="titre-medoc"><%= prescription_item.item.name %></p>
         <div class="card-medoc">
-          <%= image_tag "icons8-clock-64"%>
-          <p>1  combiné une fois par jour</p>
-        </div>
+            <%= image_tag "icons8-pill-64"%>
+            <p><%= prescription_item.item.desc %></p>
+          </div>
+          <div class="card-medoc">
+            <%= image_tag "icons8-clock-64"%>
+            <p><%= prescription_item.posology %></p>
+          </div>
+      </div>
+      <hr>
+    <% end %>
+
+  <% if @prescription.sent? %>
+    <div class="flex-boutton">
+        <%= link_to prescription_pharmacies_path(params[:id]) do%>
+        <button class="bn632-hover bn26">Choisir une pharmacie</button>
+      <% end %>
     </div>
-    <hr>
-    <div class="medoc">
-      <p id="titre-medoc">Doliprane</p>
-      <div class="card-medoc">
-          <%= image_tag "icons8-pill-64"%>
-          <p>solution buvable</p>
-        </div>
-        <div class="card-medoc">
-          <%= image_tag "icons8-clock-64"%>
-          <p>1  combiné une fois par jour</p>
-        </div>
+  <% else %>
+    <div class="flex-boutton">
+        <%= link_to patient_prescriptions_path() do%>
+        <button class="bn632-hover bn26">Déja commandée - Retour</button>
+      <% end %>
     </div>
-        <hr>
-
-    <div class="medoc">
-      <p id="titre-medoc">Doliprane</p>
-      <div class="card-medoc">
-          <%= image_tag "icons8-pill-64"%>
-          <p>solution buvable</p>
-        </div>
-        <div class="card-medoc">
-          <%= image_tag "icons8-clock-64"%>
-          <p>1  combiné une fois par jour</p>
-        </div>
-    </div>
-  </div>
-
-  <div class="flex-boutton">
-      <button class="bn632-hover bn26">Finaliser</button>
-  </div>
-
-
-
+  <% end %>
+</div>

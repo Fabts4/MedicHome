@@ -6,7 +6,7 @@ class Doctor::PrescriptionItemsController < ApplicationController
     if @prescription_item.save
       redirect_to edit_doctor_prescription_path(@prescription)
     else
-      render 'edit_doctor_prescription', status: :unprocessable_entity
+      redirect_to edit_doctor_prescription_path(@prescription), status: :unprocessable_entity
     end
   end
 

@@ -19,6 +19,10 @@ class PharmaciesController < ApplicationController
     @drugs = @prescription.prescription_items
     @parapharma = Item.where(drug: false)
     @cart_items = @cart.cart_items
+    @final_price = 0
+    @cart_items.each do |cart_item|
+      @final_price += cart_item.item.price * cart_item.quantity
+    end
   end
 
   private

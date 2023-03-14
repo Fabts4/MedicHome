@@ -10,5 +10,11 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import QuantityController from "./quantity_controller"
+application.register("quantity", QuantityController)
+
+import TotalController from "./total_controller"
+application.register("total", TotalController)
+
 import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)

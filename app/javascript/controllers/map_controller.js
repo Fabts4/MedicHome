@@ -11,7 +11,7 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue;
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/mapbox/streets-v12",
     });
 
     this.#addMarkersToMap();
@@ -116,7 +116,7 @@ export default class extends Controller {
         },
         paint: {
           "line-color": "#A5200B",
-          "line-width": 12,
+          "line-width": 6,
           "line-opacity": 0.85,
         },
       });

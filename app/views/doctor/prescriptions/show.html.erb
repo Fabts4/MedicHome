@@ -12,7 +12,7 @@
               <p><%= @prescription.doctor.address  %></p>
           </div>
           <div class="text-ordonance">
-              <p>Le <%= Date.today.strftime('%d/%m/%Y')  %></p>
+              <p>Le <%= @prescription.date.strftime('%d/%m/%Y')  %></p>
               <p><%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></p>
               <p><%= @prescription.patient.address %></p>
               <p><strong>N° SS : </strong><%= @prescription.patient.ssn %></p>
@@ -32,9 +32,9 @@
         <% end %>
       </div>
   </div>
+    <p> <small>(Ordonnance transmise à <%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %> le <%= @prescription.updated_at.strftime('%d/%m/%Y')%>)</small> </p>
   <div class="footer-ordonance">
-      <a href="/doctor/prescriptions" class="boutton-white">Retour</a>
-
+      <a href="/doctor/prescriptions" class="btn-gris btn btn-outline-secondary mb-3">Retour</a>
   </div>
 </div>
 </div>
