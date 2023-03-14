@@ -16,12 +16,14 @@
     <% @sent_prescriptions.sort.reverse!.each do |prescription|  %>
 
       <%= link_to  patient_prescription_path(prescription), class: "card-ordonnance-patient" do %>
-          <p class="ordonnance-date"> Ordonnance du <%= prescription.date.strftime('%d/%m/%Y') %></p>
           <div class="ordonnance-doctor">
             <% if prescription.doctor.photo.attached? %>
               <%= cl_image_tag prescription.doctor.photo.key, class: "avatar" %>
             <% end  %>
-            <p><%= prescription.doctor.first_name %> <%= prescription.doctor.last_name %></p>
+            <div class="text-card-doctor">
+              <p class="ordonnance-date"> Ordonnance du <%= prescription.date.strftime('%d/%m/%Y') %></p>
+              <p class="titre-p"><%= prescription.doctor.first_name %> <%= prescription.doctor.last_name %></p>
+            </div>
           </div>
       <% end %>
     <% end %>
@@ -31,12 +33,14 @@
   <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <% @ordered_prescriptions.sort.reverse!.each do |prescription|  %>
       <%= link_to  patient_prescription_path(prescription), class: "card-ordonnance-patient" do %>
-          <p class="ordonnance-date"> Ordonnance du <%= prescription.date.strftime('%d/%m/%Y')   %></p>
           <div class="ordonnance-doctor">
             <% if prescription.doctor.photo.attached? %>
               <%= cl_image_tag prescription.doctor.photo.key, class: "avatar" %>
             <% end  %>
-            <p><%= prescription.doctor.first_name %> <%= prescription.doctor.last_name %></p>
+      <div class="text-card-doctor">
+          <p class="ordonnance-date"> Ordonnance du <%= prescription.date.strftime('%d/%m/%Y')   %></p>
+            <p class="titre-p"><%= prescription.doctor.first_name %> <%= prescription.doctor.last_name %></p>
+      </div>
           </div>
       <% end %>
     <% end %>
