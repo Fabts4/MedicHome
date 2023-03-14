@@ -13,11 +13,15 @@
     </div>
     <hr>
     <div class="checkout-section">
-      <h3>Items</h3>
+      <h3>Parapharmacie</h3>
       <ul>
         <% @cart_items.each do |cart_item|%>
-          <%= cart_item.quantity %> x <%= cart_item.item.name %> - <%= cart_item.quantity * cart_item.item.price %> € <br>
-          <%= link_to "Supprimer", cart_item_path(cart_item), class: "remove-button", data: { turbo_method: :delete } %>
+          <li>
+          <%= cart_item.quantity %> x <%= cart_item.item.name %> - <%= cart_item.quantity * cart_item.item.price %> €
+          <%= link_to cart_item_path(cart_item), data: { turbo_method: :delete } do %>
+            <i class="fa-regular fa-trash-can"></i>
+          </li>
+          <% end  %>
         <% end %>
       </ul>
     </div>
@@ -39,7 +43,7 @@
   </div>
 
 
-  <h3>Liste des items</h3>
+  <h3>Parapharmacie</h3>
   <div class="product-cards">
     <% @parapharma.each do |para| %>
       <div class="product-card">
