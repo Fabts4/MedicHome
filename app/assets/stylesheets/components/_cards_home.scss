@@ -17,7 +17,7 @@ body {
   background-color: #fff;
   transform: scale(0.7);
   border-radius: 8px;
-  box-shadow: 0 0 10px 1px #0488E3 ;
+  box-shadow: 0 0 10px 1px $blue ;
   left: 25%;
 }
 
@@ -32,7 +32,7 @@ body {
 .card-hp-profession {
   font-size: 35px;
   font-weight: 600;
-  color: #0488E3;
+  color: $blue;
   position: absolute;
   top: 100px;
   letter-spacing: 2px;
@@ -41,14 +41,14 @@ body {
 
 .hp-bio {
   font-size: 16px;
-  color: #0488E3;
+  color: $blue;
   position: absolute;
   top: 200px;
   text-align: center;
 }
 
 .card-hp-divider {
-  background-color: #0488E3;
+  background-color: $blue;
   height: 1.5px;
   width: 50%;
   position: absolute;
@@ -100,7 +100,7 @@ body {
   box-shadow: -70px;
   font-size: 20px;
   color:white;
-  background-color: #0488E3;
+  background-color: $blue;
   width: 100%;
   padding: 12px 0;
   font-weight: 600;
