@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@1&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="../../assets/images/medical.png"/>
-  
+
 
     <title><%= meta_title %></title>
     <meta name="description" content="<%= meta_description %>">
@@ -63,7 +63,7 @@
       <% if !current_user.doctor? %>
         <%= render "shared/navbar-user" %>
         <% else %>
-        <%= "render shared/footer" %>
+        <%= render "shared/footer" %>
       <% end %>
     <% end  %>
   </body>
