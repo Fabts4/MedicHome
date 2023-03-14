@@ -49,7 +49,9 @@
     <%#= render 'shared/ios_pwa_links' %>
   </head>
 
-  <body>
+  <% controller.controller_name %>
+
+  <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
     <% if user_signed_in? %>
       <% if current_user.doctor? %>
         <%= render "shared/navbar" %>
