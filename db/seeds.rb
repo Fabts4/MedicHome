@@ -8,16 +8,16 @@ Doctor.destroy_all
 Patient.destroy_all
 Pharmacy.destroy_all
 Cart.destroy_all
-Item.destroy_all
+# Item.destroy_all
 
-CSV.foreach(filepath, headers: :first_row) do |row|
-  Item.create(name: row[0], desc: row[1], administration: row[2], price: 0)
-end
+# CSV.foreach(filepath, headers: :first_row) do |row|
+#   Item.create(name: row[0], desc: row[1], administration: row[2], price: 0)
+# end
 
 doc_knock = Doctor.create!(email: 'docknock@gmail.com', password: 'azerty', first_name: 'Docteur', last_name: 'Knock', address: '3 rue le Goff', ssn: '14701126747696', mutuelle_name:'Lidl', mutuelle_number: '0000836439', rpps: '17459398274', doctor: true )
 raoult = Doctor.create!(email: 'raoult@gmail.com', password: 'azerty', first_name: 'Docteur', last_name: 'Raoult', address: '12 avenue de la Grande Armée', ssn: '17723066749696', mutuelle_name:'Osborne.Corp', mutuelle_number: '0000572942', rpps: '18153865409', doctor: true )
 
-fabien = Patient.create!(email: 'fabien@gmail.com', password: 'azerty', first_name: 'Fabien', last_name: 'Marsaud', address: '42 boulevard Raspail', ssn: '17723066749696', mutuelle_name:'Mutuelle', mutuelle_number: '0000572942', rpps: '', doctor: false )
+fabien = Patient.create!(email: 'fabien@gmail.com', password: 'azerty', first_name: 'Fabien', last_name: 'Marsaud', address: '42 boulevard Raspail', ssn: '17723066749696', mutuelle_name:'AG2R Mutuelle', mutuelle_number: '0000572942', rpps: '', doctor: false )
 georges = Patient.create!(email: 'bernard@gmail.com', password: 'azerty', first_name: 'Georges', last_name: 'Moustaki', address: '76 rue de Vaugirard', ssn: '17723066749696', mutuelle_name:'Mutuelle', mutuelle_number: '0000572942', rpps: '', doctor: false )
 
 fabien_photo = URI.open('https://upload.wikimedia.org/wikipedia/commons/3/38/Grand_Corps_Malade_D%C3%A9jeuner_C%C3%A9sar_2018.jpg')
