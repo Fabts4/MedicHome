@@ -14,14 +14,7 @@
       <h1 class="card-header-dr-home">Rechercher une ordonnance</h1>
       <p class="card-text-dr-home">Parcourir mes ordonnances en cours et mes ordonnances émises.</p>
       <%= link_to  doctor_prescriptions_path do %>
-<%# <<<<<<< HEAD %>
-      <button class="card-btn-dr-home">Rechercher <span>&rarr;</span></button>
-<%# ======= %>
-      <%# <button class= "boutton-carré" type="button" class="btn btn-primary"> %>
-          <%# <h2>Rechercher une ordonnance</h2> %>
-          <%#= image_tag "search-icon.png", alt: "icone de TRJSsearch", class:"image-bouton-carré" %>
-      <%# </button> %>
-<%# >>>>>>> master %>
+        <button class="card-btn-dr-home">Rechercher <span>&rarr;</span></button>
       <% end %>
     </div>
   </div>
@@ -39,11 +32,7 @@
       <div class="modal-footer modal-body">
         <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
           <%= f.input :patient_id, collection: Patient.simple_form_collection, input_html: {data: {controller: "tom-select"}}, class: "user-select" %>
-<%# <<<<<<< HEAD %>
-          <%#= f.submit 'Commencer', class: "btn btn-primary text-white" %>
-<%# ======= %>
-          <%= f.submit 'Commencer', class: "bn632-hover bn26" %>
-<%# >>>>>>> master %>
+          <%= f.submit 'Commencer', class: "btn btn-primary text-white" %>
         <% end %>
       </div>
     </div>
