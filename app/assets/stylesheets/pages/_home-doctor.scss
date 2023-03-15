@@ -25,7 +25,7 @@
 }
 
 #prescription_patient_id {
-    width: 90%;
+    width: 100%;
 }
 
 .banner-img {
@@ -46,4 +46,8 @@ button {
     p {
         color: white;
     }
+}
+#btn-modal {
+    display: flex;
+    justify-content: center;
 }
