@@ -15,9 +15,8 @@
   transition: 0.5s;
 }
 
-.grid-item-dr-home:hover {
-  transform: translateY(0.5%);
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, .5);
+#prescription_patient_id {
+    width: 100%;
 }
 
 .card-img-dr-home {
@@ -91,6 +90,11 @@ a {
   // height: 350px;
   margin-top: 50px;
   margin-left: 30px;
+}
+
+#btn-modal {
+  display: flex;
+  justify-content: center;
 }
 // .parent-flexbox {
 //   display: flex;
