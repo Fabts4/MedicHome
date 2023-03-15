@@ -24,7 +24,7 @@
       </div>
       <div class="modal-footer modal-body">
         <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
-          <%= f.input :patient_id, collection: Patient.simple_form_collection,class:"input-modal" %>
+          <%= f.input :patient_id, collection: Patient.simple_form_collection, class: "user-select", input_html: {data: {controller: "tom-select"}} %>
           <%= f.submit 'Commencer', class: "btn btn-primary" %>
         <% end %>
       </div>
