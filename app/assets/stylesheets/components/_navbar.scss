@@ -7,10 +7,13 @@
   background: rgb(6,136,228);
   background: linear-gradient(0deg, rgba(6,136,228,1) 0%, rgba(34,76,195,1) 100%);
   a {
-    color: black;
+    color: rgb(255, 255, 255);
   }
 
   p {
+    color: white;
+  }
+  li p {
     color: white;
   }
 }

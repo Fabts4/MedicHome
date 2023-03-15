@@ -34,6 +34,7 @@
     background-image: asset-url("back-final.jpg");
     background-size: cover;
     background-position: center;
+    height: calc(100vh - 70px);
     h1 {
       color: #0688E4;
       font-size: 110px;
