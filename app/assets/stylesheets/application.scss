@@ -6,13 +6,12 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
-@import "tom-select/dist/css/tom-select.min.css";
+@import "tom-select/dist/scss/tom-select.bootstrap5";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 
-
 .container {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }

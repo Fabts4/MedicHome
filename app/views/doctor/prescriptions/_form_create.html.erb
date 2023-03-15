@@ -1,7 +1,7 @@
 <%= simple_form_for :presc, url: doctor_prescription_prescription_items_path(prescription), method: :post do |f| %>
   <%= f.input :item_id, label: "Médicament", collection: items, input_html: {data: {controller: "tom-select"}} %>
   <%#= f.input :posology, label: "Posologie", input_html: {value: '... fois par jour pendant ... jours'} %>
-  <h3>Posologie</h3>
+  <h6 class="poso-title">Posologie</h6>
   <div class="posologie">
     <%= f.input :quantity1, label: "Posologie" %>
     <p>fois par</p>
