@@ -1,9 +1,12 @@
-
 .banner-text h1 {
-  color: #224CC3;
-  font-size: 110px;
+  text-align: center;
+  font-family: "Fredoka One", cursive;
+  margin-top: 32px;
+  margin-bottom: 70px;
+  color: $blue;
+  font-size: 80px;
   font-weight: 700;
-  justify-content: center;
+  letter-spacing: 4px;
 }
 
 .banner-text h2 {
@@ -27,7 +30,9 @@
 .banner-text {
   padding-top: 100px;
   padding-bottom: 300px;
-  background-image: image-url("/Users/mehdisabil/code/MehdiSabil1/MedicHome/app/assets/images/icons/Back-homepage.jpg");
+  background-image: image-url(
+    "/Users/mehdisabil/code/MehdiSabil1/MedicHome/app/assets/images/icons/Back-homepage.jpg"
+  );
   background-size: cover;
   background-position: center;
 }
