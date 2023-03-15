@@ -9,5 +9,9 @@ class Patient::PrescriptionsController < ApplicationController
   def show
     @prescription = Prescription.find(params[:id])
     @prescription_items = PrescriptionItem.where(prescription_id: @prescription.id)
+    @cart = Cart.find_by(prescription_id: @prescription.id)
+    if !@cart.nil?
+      @paraitems = @cart.cart_items
+    end
   end
 end
