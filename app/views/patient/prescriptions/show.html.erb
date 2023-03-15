@@ -1,6 +1,6 @@
 
 <div>
-  <h1 id="titre-page-ordo">Ordonnance en cours</h1>
+  <h1 id="titre-page-ordo">Ordonnance</h1>
   <div class="ordonnance-patient mx-3">
     <%# contact médecin %>
     <div class="flexbox-ordonnance-patient">
@@ -38,6 +38,26 @@
           </div>
       </div>
       <hr>
+    <% end %>
+    <br>
+
+    <% if !@cart.nil?  %>
+      <p class="medoc-nb"> Votre commande auprès de <%= @cart.pharmacy.name %> : </p>
+
+      <% @paraitems.each do |paraitem| %>
+        <div class="medoc">
+          <div class="card-medoc">
+            <% if paraitem.item.photo.attached? %>
+              <%= cl_image_tag paraitem.item.photo.key, height: 50, width: 50, crop: :fit, class: "img-show" %>
+            <% end  %>
+            <p><%= paraitem.item.name %> x <%= paraitem.quantity %> </p>
+          </div>
+        </div>
+      <% end %>
+      <hr>
+      <div class="medoc">
+      <p> Total commande : <%= @cart.final_price %> €</p>
+      </div>
     <% end %>
 
   <% if @prescription.sent? %>

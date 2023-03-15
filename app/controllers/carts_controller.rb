@@ -4,8 +4,9 @@ class CartsController < ApplicationController
     @cart.ordered!
     @cart.final_price = params[:price]
     @cart.pharmacy.id = params[:pharmacy]
+    @cart.save
     @prescription = @cart.prescription
     @prescription.ordered!
-    redirect_to patient_prescriptions_path
+    redirect_to  patient_prescription_path(@prescription)
   end
 end

@@ -32,10 +32,11 @@
         <label for="delivery-checkbox">En livraison ? (5€)</label>
       </div>
       <h3>Total: <span data-total-target="finalPrice"><%= @final_price %></span> € </h3>
-
+        <%= link_to cart_path(@cart, price: @final_price, pharmacy: @pharmacy), data: {turbo_method: :patch} do %>
         <button class="total total-button" data-bs-toggle = "modal" data-bs-target = "#confirmation">
           Commander
         </button>
+        <% end %>
 
 
     </div>
@@ -75,6 +76,3 @@
     <% end %>
   </div>
 </div>
-
-
-
