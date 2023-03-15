@@ -17,16 +17,16 @@
         <% @pending_prescriptions.sort.reverse!.each do |prescription|  %>
         <div class="card-ordonance">
           <% if prescription.draft? %>
-            <p>  <%= image_tag "icons8-treatment-64", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
+            <p>  <%= image_tag "icons8-treatment-64.png", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
           <% else %>
-            <p> <%= image_tag "icons8-treatment-64", class: "avatar" %> Ordonnance émise</p>
+            <p> <%= image_tag "icons8-treatment-64.png", class: "avatar" %> Ordonnance émise</p>
           <% end %>
           <% if prescription.patient.photo.attached? %>
             <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
           <% end %>
           <div class="flex-ul">
-            <p><%= image_tag "icons8-manager-64", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
-            <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
+            <p><%= image_tag "icons8-manager-64.png", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
+            <p><%= image_tag "icons8-planner-64.png", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
           </div>
           <div class="div-link">
             <% if prescription.draft? %>
@@ -49,16 +49,16 @@
         <% @sent_prescriptions.sort.reverse!.each do |prescription|  %>
         <div class="card-ordonance">
           <% if prescription.draft? %>
-            <p>  <%= image_tag "icons8-treatment-64", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
+            <p>  <%= image_tag "icons8-treatment-64.png", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
           <% else %>
-            <p> <%= image_tag "icons8-treatment-64", class: "avatar" %> Ordonnance émise</p>
+            <p> <%= image_tag "icons8-treatment-64.png", class: "avatar" %> Ordonnance émise</p>
           <% end %>
           <% if prescription.patient.photo.attached? %>
             <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
           <% end %>
           <div class="flex-ul">
-            <p><%= image_tag "icons8-manager-64", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
-            <p><%= image_tag "icons8-planner-64", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
+            <p><%= image_tag "icons8-manager-64.png", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
+            <p><%= image_tag "icons8-planner-64.png", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
           </div>
           <div class="div-link">
             <% if prescription.draft? %>
