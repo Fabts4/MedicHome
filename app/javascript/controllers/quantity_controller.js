@@ -29,4 +29,6 @@ export default class extends Controller {
     const newHref = this.linkTarget.href.replace(/quantity=\d+/, `quantity=${quantity}`);
     this.linkTarget.setAttribute('href', newHref);
   }
+
+
 }
