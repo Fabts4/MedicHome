@@ -1,6 +1,6 @@
 
 <div>
-  <h1 id="titre-page-ordo">Ordonnance</h1>
+  <h1 id="titre-page-ordo" class="titre-page-mobile">Ordonnance</h1>
   <div class="ordonnance-patient mx-3">
     <%# contact médecin %>
     <div class="flexbox-ordonnance-patient">
@@ -69,7 +69,7 @@
   <% else %>
     <div class="flex-boutton">
         <%= link_to patient_prescriptions_path() do%>
-        <button class="bn632-hover bn26">Déja commandée - Retour</button>
+        <a href="/patient/prescriptions" id="btn-gris-cart"class="btn-gris btn btn-outline-secondary mb-3">Retour</a>
       <% end %>
     </div>
   <% end %>
