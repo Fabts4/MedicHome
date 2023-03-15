@@ -15,7 +15,7 @@
         <p><%= @prescription.doctor.address %></p>
         <p>Numéro RPPS: <%= @prescription.doctor.rpps  %></p>
         <div class="calendar">
-        <%= image_tag "icons8-planner-64" %>
+        <%= image_tag "icons8-planner-64.png" %>
         <p><%= @prescription.date.strftime('%d/%m/%Y') %></p>
       </div>
       </div>
@@ -29,11 +29,11 @@
       <div class="medoc">
         <p id="titre-medoc"><%= prescription_item.item.name %></p>
         <div class="card-medoc">
-            <%= image_tag "icons8-pill-64"%>
+            <%= image_tag "icons8-pill-64.png"%>
             <p><%= prescription_item.item.desc %></p>
           </div>
           <div class="card-medoc">
-            <%= image_tag "icons8-clock-64"%>
+            <%= image_tag "icons8-clock-64.png"%>
             <p><%= prescription_item.posology %></p>
           </div>
       </div>
