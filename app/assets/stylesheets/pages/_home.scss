@@ -1,1 +1,29 @@
 // Specific CSS for your home-page
+#medichimage {
+    display: flex;
+    justify-content: center;
+}
+#titre-page-home {
+    text-align: left;
+    font-family: 'Fredoka One', cursive;
+    margin-top: 8px;
+    margin-bottom: 40px;
+    color: $blue;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+#sous-titre-page {
+    
+}
+#btblue {
+    margin: 0;
+}
+#sous-titre-page {
+    color: white;
+    font-size: 30px;
+    
+}
+.img-home-b {
+    width: 70%;
+}
