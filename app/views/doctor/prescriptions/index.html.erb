@@ -17,6 +17,13 @@
 
       <h2 class="titre-page"><span style="color:black"><%= @sent_prescriptions.count %></span> ordonnances transmises</h2>
 
+      <div id="doctor-prescriptions">
+        <% @sent_prescriptions.sort.reverse!.each do |prescription|  %>
+          <%= link_to doctor_prescription_path(prescription) do %>
+            <%= render "doctor/prescriptions/card-ordonance", prescription: prescription %>
+          <% end %>
+        <% end %>
+      </div>
 
   <!-- Modal -->
   <div class="modal-global modal fade" id="UserChoiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -40,11 +47,3 @@
   </div>
 
 </div>
-
-      <div id="doctor-prescriptions">
-        <% @sent_prescriptions.sort.reverse!.each do |prescription|  %>
-          <%= link_to doctor_prescription_path(prescription) do %>
-            <%= render "doctor/prescriptions/card-ordonance", prescription: prescription %>
-          <% end %>
-        <% end %>
-      </div>

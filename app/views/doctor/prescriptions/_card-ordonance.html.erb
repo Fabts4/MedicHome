@@ -1,21 +1,23 @@
-<div class="card-ordonance">
-  <div class="feature patient-name">
-    <% if prescription.patient.photo.attached? %>
-      <%= cl_image_tag prescription.patient.photo.key, class: "avatar-large" %>
-    <% else %>
-      <%= image_tag "icons8-manager-64.png", class: "avatar" %>
-    <% end %>
-    <p><%= prescription.patient.first_name %> <strong><%= prescription.patient.last_name %></strong></p>
-  </div>
-  <div class="feature ordonance-date">
-    <%= image_tag "icons8-planner-64.png", class: "avatar" %>
-    <p><%= I18n.l(prescription.date, format: "%A %d %B %Y", locale: :fr) %></p>
-  </div>
-  <% if prescription.draft? %>
-    <div class="div-link">
-      <%= link_to edit_doctor_prescription_path(prescription) do %>
-        <button class="bn632-hover bn26">Finaliser</button>
+<div ><span class = "ref">#<%= prescription.patient.first_name.chars.first %><%= prescription.patient.last_name.chars.first %><%= prescription.doctor.first_name.chars.first %><%= prescription.doctor.last_name.chars.first %><%= prescription.patient.id %><%= prescription.doctor.id %><%= prescription.id %></span>
+  <div class="card-ordonance">
+    <div class="feature patient-name">
+      <% if prescription.patient.photo.attached? %>
+        <%= cl_image_tag prescription.patient.photo.key, class: "avatar-large" %>
+      <% else %>
+        <%= image_tag "icons8-manager-64.png", class: "avatar" %>
       <% end %>
+      <p><%= prescription.patient.first_name %> <strong><%= prescription.patient.last_name %></strong></p>
     </div>
-  <% end %>
+    <div class="feature ordonance-date">
+      <%= image_tag "icons8-planner-64.png", class: "avatar" %>
+      <p><%= I18n.l(prescription.date, format: "%A %d %B %Y", locale: :fr) %></p>
+    </div>
+    <% if prescription.draft? %>
+      <div class="div-link">
+        <%= link_to edit_doctor_prescription_path(prescription) do %>
+          <button class="bn632-hover bn26">Finaliser</button>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
