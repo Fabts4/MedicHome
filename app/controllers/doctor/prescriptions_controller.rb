@@ -24,12 +24,13 @@ class Doctor::PrescriptionsController < ApplicationController
   end
 
   def create
-    if prescription_params[:patient_id].empty?
-      @prescription = Prescription.new
-      @prescriptions = Prescription.where(doctor: current_user)
-      render 'doctor/prescriptions/index', status: :unprocessable_entity
-    end
-
+    # if prescription_params[:patient_id].empty?
+    #   @prescription = Prescription.new
+    #   @prescriptions = Prescription.where(doctor: current_user)
+    #   @pending_prescriptions = Prescription.draft.where(doctor: current_user)
+    #   @sent_prescriptions = Prescription.where(doctor: current_user, status: [1, 2])
+    #   render 'doctor/prescriptions/index', status: :unprocessable_entity
+    # end
     @prescription = Prescription.draft.find_by(patient_id: prescription_params[:patient_id])
     if @prescription.nil?
       @prescription = Prescription.create(prescription_params.merge(doctor: current_user, date: Date.today))

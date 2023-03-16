@@ -8,13 +8,10 @@
     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Passées</button>
   </li>
 </ul>
+
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-
-
-
     <% @sent_prescriptions.sort.reverse!.each do |prescription|  %>
-
       <%= link_to  patient_prescription_path(prescription), class: "card-ordonnance-patient" do %>
           <div class="ordonnance-doctor">
             <% if prescription.doctor.photo.attached? %>
@@ -27,7 +24,6 @@
           </div>
       <% end %>
     <% end %>
-
 
   </div>
   <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
