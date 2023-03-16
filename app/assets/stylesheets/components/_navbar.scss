@@ -6,7 +6,6 @@
   width: 100%;
   background: rgb(6,136,228);
   background: linear-gradient(0deg, rgba(6,136,228,1) 0%, rgba(34,76,195,1) 100%);
-  background: transparent;
   a {
     color: black;;
   }
@@ -33,4 +32,8 @@
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.transparent {
+  background: transparent;
 }
