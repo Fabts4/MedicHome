@@ -3,6 +3,9 @@
 
 .product-cards {
   margin: 0 auto;
+  .product-card:last-child {
+    margin-bottom: 5rem;
+  }
 }
 
 .product-card {
