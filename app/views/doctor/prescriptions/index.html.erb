@@ -55,6 +55,8 @@
           <% end %>
           <% if prescription.patient.photo.attached? %>
             <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
+          <% else %>
+            <p><%= image_tag "https://www.dlsu.edu.ph/wp-content/uploads/2022/08/anonymous.png", class: "avatar-large" %>
           <% end %>
           <div class="flex-ul">
             <p><%= image_tag "icons8-manager-64.png", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>

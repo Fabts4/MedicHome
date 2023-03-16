@@ -1,4 +1,4 @@
-<div class="container p-5">
+<div class="container">
   <h1 class="titre-page">Ordonnance de Mr <%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %></h1>
 
 
@@ -32,7 +32,7 @@
         <% end %>
       </div>
   </div>
-    <p> <small>(Ordonnance transmise à <%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %> le <%= @prescription.updated_at.strftime('%d/%m/%Y')%>)</small> </p>
+    <p> <small>(Ordonnance transmise à <%= @prescription.patient.first_name %> <%= @prescription.patient.last_name %> le <%= @prescription.date.strftime('%d/%m/%Y')%>)</small> </p>
   <div class="footer-ordonance">
       <a href="/doctor/prescriptions" class="btn-gris btn btn-outline-secondary mb-3">Retour</a>
   </div>
