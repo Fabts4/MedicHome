@@ -27,7 +27,7 @@ class Users::SessionsController < Devise::SessionsController
   def after_sign_in_path_for(resource)
     # "/#{resource.doctor? ? 'doctor' : 'patient'}_home"
     if resource.doctor?
-      '/doctor_home'
+      '/doctor/prescriptions'
     else
       '/patient/prescriptions'
     end

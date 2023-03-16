@@ -1,6 +1,9 @@
-
 <%= simple_form_for prescription_item, url: doctor_prescription_item_path(prescription_item), method: :patch do |f| %>
-  <%= f.input :item_id, label: "Médicament", collection: items, input_html: {data: {controller: "tom-select"}} %>
-  <%= f.input :posology, label: "Posologie" %>
-  <%= f.submit 'Modifier', class: "btn btn-primary" %>
+  <div class="modal-body">
+    <%= f.input :item_id, label: false, collection: items, input_html: {data: {controller: "tom-select-2"}} %>
+    <%= f.input :posology, label: "Posologie" %>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit 'Modifier', class: "bn632-hover bn26" %>
+  </div>
 <% end %>

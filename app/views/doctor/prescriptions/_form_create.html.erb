@@ -1,14 +1,17 @@
 <%= simple_form_for :presc, url: doctor_prescription_prescription_items_path(prescription), method: :post do |f| %>
-  <%= f.input :item_id, label: "Médicament", collection: items, input_html: {data: {controller: "tom-select"}} %>
-  <%#= f.input :posology, label: "Posologie", input_html: {value: '... fois par jour pendant ... jours'} %>
-  <h6 class="poso-title">Posologie</h6>
-  <div class="posologie">
-    <%= f.input :quantity1, label: "Posologie" %>
-    <p>fois par</p>
-    <%= f.input :frequency1, label: "", collection: ["jour", "semaine"] %>
-    <p>pendant</p>
-    <%= f.input :quantity2, label: ""%>
-    <%= f.input :frequency2, label: "", collection: ["jours", "semaines"] %>
+  <%= f.input :item_id, label: false, collection: items, input_html: {data: {controller: "tom-select-2"}} %>
+  <div class="modal-body">
+    <h6 class="poso-title mt-3">Posologie</h6>
+    <div class="posologie">
+      <%= f.input :quantity1, label: "Posologie" %>
+      <p>fois par</p>
+      <%= f.input :frequency1, label: "", collection: ["jour", "semaine"] %>
+      <p>pendant</p>
+      <%= f.input :quantity2, label: ""%>
+      <%= f.input :frequency2, label: "", collection: ["jours", "semaines"] %>
+    </div>
   </div>
-  <%= f.submit 'Ajouter', class: "btn btn-primary" %>
+  <div class="modal-footer">
+    <%= f.submit 'Ajouter', class: "bn632-hover bn26" %>
+  </div>
 <% end %>
