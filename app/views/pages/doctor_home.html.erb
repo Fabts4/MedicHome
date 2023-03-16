@@ -1,15 +1,22 @@
-<div class="banner-img">
-  <div class="parent-flexbox">
-      <button class= "boutton-carré" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserChoiceModal">
-          <h2>Nouvelle Ordonnance</h2>
-          <%= image_tag "prescription.png", alt: "icone de medoc", class:"image-bouton-carré" %>
-      </button>
+<div class="container">
+  <div class="grid-dr-home w-75 mx-auto">
+    <div class="card-dr-home-left w-50">
+      <%= image_tag "DOC-PHOTO.jpg", alt: "icone de medoc", class:"card-img-dr-home" %>
+      <div class="card-content-dr-home">
+        <h1 class="card-header-dr-home">Nouvelle Ordonnance</h1>
+        <p class="card-text-dr-home">Ajouter une prescription. La transmettre en un clic !</p>
+        <button class="card-btn-dr-home" data-bs-toggle="modal" data-bs-target="#UserChoiceModal"> Créer <span>&rarr;</span></button>
+      </div>
+    </div>
+
+    <div class="card-dr-home-right ml-3 w-50">
+      <%= image_tag "DOC-PHOTO1.jpg", alt: "icone de medoc", class:"card-img-dr-home" %>      <div class="card-content-dr-home">
+      <h1 class="card-header-dr-home">Rechercher une ordonnance</h1>
+      <p class="card-text-dr-home">Parcourir mes ordonnances en cours et mes ordonnances émises.</p>
       <%= link_to  doctor_prescriptions_path do %>
-      <button class= "boutton-carré">
-          <h2>Rechercher une ordonnance</h2>
-          <%= image_tag "search-icon.png", alt: "icone de TRJSsearch", class:"image-bouton-carré" %>
-      </button>
+        <button class="card-btn-dr-home">Rechercher <span>&rarr;</span></button>
       <% end %>
+    </div>
   </div>
 </div>
 
@@ -25,6 +32,7 @@
       <div class="modal-footer modal-body">
         <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
           <%= f.input :patient_id, collection: Patient.simple_form_collection, input_html: {data: {controller: "tom-select"}}, class: "user-select" %>
+
           <div id="bn-flex">
           <%= f.submit 'Commencer', class: "bn632-hover bn26" %>
           </div>
@@ -33,5 +41,3 @@
     </div>
   </div>
 </div>
-
-<%# <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#2f5dbf" fill-opacity="1" d="M0,224L80,197.3C160,171,320,117,480,106.7C640,96,800,128,960,154.7C1120,181,1280,203,1360,213.3L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg> %>

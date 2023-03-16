@@ -1,7 +1,17 @@
 class CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.create!(cart_item_params)
-    redirect_to prescription_pharmacy_path(@cart_item.prescription, @cart_item.pharmacy)
+    @cart = @cart_item.cart
+    @pharmacy = @cart.pharmacy
+    @prescription = @cart.prescription
+    @drugs = @prescription.prescription_items
+    @cart_items = @cart.cart_items
+    @final_price = 0
+    @cart_items.each do |cart_item|
+      @final_price += cart_item.item.price * cart_item.quantity
+    end
+    # redirect_to prescription_pharmacy_path(@cart_item.prescription, @cart_item.pharmacy)
+    render json:{html: render_to_string(partial: 'pharmacies/checkout_card', locals: {prescription: @prescription, drugs: @drugs, cart_items: @cart_items, final_price: @final_price, cart: @cart, pharmacy: @pharmacy}, layout: false, formats: :html )}.to_json
   end
 
   def update # cette methode doit être revue après l'ajout de "quantity"

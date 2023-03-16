@@ -9,6 +9,7 @@ body {
 .home-cards-container {
   display: flex;
   justify-content: center;
+  margin-top: -130px
 }
 
 .card-homepage {
@@ -17,7 +18,7 @@ body {
   background-color: #fff;
   transform: scale(0.7);
   border-radius: 8px;
-  box-shadow: 0 0 10px 1px $blue ;
+  box-shadow: 0 0 1px 1px;
   left: 25%;
 }
 
@@ -59,7 +60,7 @@ body {
 .card-photo-hp {
   height: 100%;
   width: 100%;
-  background-image: url(doctor.jpg);
+  background-image: url("https://img.le-dictionnaire.com/docteur.jpg");
   background-repeat: no-repeat;
   position: absolute;
   bottom: 0;
@@ -71,7 +72,7 @@ body {
 .card-photo2-hp {
   height: 100%;
   width: 100%;
-  background-image: url(patient.jpg);
+  background-image: url("https://img.freepik.com/photos-gratuite/joyeuse-femme-age-moyen-aux-cheveux-boucles_1262-20859.jpg?w=1480&t=st=1678901456~exp=1678902056~hmac=466bf120cb49605c071ac3b565af20c4ad9acbdd1f2f6a506265425c986f8df3");
   background-repeat: no-repeat;
   position: absolute;
   bottom: 0;
