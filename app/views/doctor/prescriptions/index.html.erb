@@ -35,7 +35,7 @@
         </div>
         <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
         <div class="modal-body">
-          <%= f.input :patient_id, label: false, collection: Patient.simple_form_collection, input_html: {data: {controller: "tom-select"}}, class: "user-select" %>
+          <%= f.input :patient_id, label: false, collection: Patient.simple_form_collection, input_html: {data: {controller: "tom-select", tom_select_placeholder_value: "Sélectionner un patient..."}}, class: "user-select" %>
         </div>
         <div class="modal-footer">
           <%= f.submit 'Commencer → ', class: "bn632-hover bn26" %>

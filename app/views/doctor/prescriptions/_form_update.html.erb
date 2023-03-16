@@ -1,6 +1,6 @@
 <%= simple_form_for prescription_item, url: doctor_prescription_item_path(prescription_item), method: :patch do |f| %>
   <div class="modal-body">
-    <%= f.input :item_id, label: false, collection: items, input_html: {data: {controller: "tom-select-2"}} %>
+    <%= f.input :item_id, label: false, collection: items, input_html: {data: {controller: "tom-select", tom_select_placeholder_value: "Sélectionner un médicament..."}} %>
     <%= f.input :posology, label: "Posologie" %>
   </div>
   <div class="modal-footer">
