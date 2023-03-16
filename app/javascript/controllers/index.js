@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddItemController from "./add_item_controller"
+application.register("add-item", AddItemController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
@@ -13,8 +16,8 @@ application.register("map", MapController)
 import QuantityController from "./quantity_controller"
 application.register("quantity", QuantityController)
 
-import TotalController from "./total_controller"
-application.register("total", TotalController)
-
 import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
+
+import TotalController from "./total_controller"
+application.register("total", TotalController)
