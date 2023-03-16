@@ -1,26 +1,41 @@
 <div class="container">
-  <h2 class="titre-page">Mes dernières ordonnances</h2>
-  <button class="card-btn-dr-home" data-bs-toggle="modal" data-bs-target="#UserChoiceModal"> Créer <span>&rarr;</span></button>
-</div>
-<div id="doctor-prescriptions">
-  <% @pending_prescriptions.sort.reverse!.each do |prescription|  %>
-  <div class="card-ordonance">
-    <% if prescription.draft? %>
-      <p>  <%= image_tag "icons8-treatment-64.png", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
-    <% else %>
-      <p> <%= image_tag "icons8-treatment-64.png", class: "avatar" %> Ordonnance émise</p>
-    <% end %>
-    <% if prescription.patient.photo.attached? %>
-      <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
-    <% end %>
-    <div class="flex-ul">
-      <p><%= image_tag "icons8-manager-64.png", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
-      <p><%= image_tag "icons8-planner-64.png", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
-    </div>
-    <div class="div-link">
-      <% if prescription.draft? %>
-        <%= link_to edit_doctor_prescription_path(prescription) do %>
-          <button class="bn632-hover bn26">Finaliser</button>
+  <br>
+  <div class="dashboard-top">
+    <% if user_signed_in? && action_name != "home" %>
+      <div class="titre-page">Bienvenue <%= current_user.first_name%> <%= current_user.last_name%></div>
+    <% end%>
+    <a class="bn632-hover bn26" data-bs-toggle="modal" data-bs-target="#UserChoiceModal">Ordonnance<%= image_tag "add_medoc_button.png" %></a>
+  </div>
+    <h4 class="titre-page">Ordonnances à finaliser</h2>
+
+
+      <div id="doctor-prescriptions">
+        <% @pending_prescriptions.sort.reverse!.each do |prescription|  %>
+        <div class="card-ordonance">
+          <% if prescription.draft? %>
+            <p>  <%= image_tag "icons8-treatment-64.png", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
+          <% else %>
+            <p> <%= image_tag "icons8-treatment-64.png", class: "avatar" %> Ordonnance émise</p>
+          <% end %>
+          <% if prescription.patient.photo.attached? %>
+            <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
+          <% end %>
+          <div class="flex-ul">
+            <p><%= image_tag "icons8-manager-64.png", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
+            <p><%= image_tag "icons8-planner-64.png", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
+          </div>
+          <div class="div-link">
+            <% if prescription.draft? %>
+              <%= link_to edit_doctor_prescription_path(prescription) do %>
+                <button class="bn632-hover bn26">Finaliser</button>
+              <% end %>
+            <% else %>
+              <%= link_to doctor_prescription_path(prescription) do %>
+                <button class="bn632-hover bn26">Consulter</button>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
         <% end %>
       <% else %>
         <%= link_to doctor_prescription_path(prescription) do %>
@@ -32,27 +47,37 @@
   <% end %>
 </div>
 
-<div id="doctor-prescriptions">
-  <% @sent_prescriptions.sort.reverse!.each do |prescription|  %>
-  <div class="card-ordonance">
-    <% if prescription.draft? %>
-      <p>  <%= image_tag "icons8-treatment-64.png", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
-    <% else %>
-      <p> <%= image_tag "icons8-treatment-64.png", class: "avatar" %> Ordonnance émise</p>
-    <% end %>
-    <% if prescription.patient.photo.attached? %>
-      <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
-    <% else %>
-      <p><%= image_tag "https://www.dlsu.edu.ph/wp-content/uploads/2022/08/anonymous.png", class: "avatar-large" %>
-    <% end %>
-    <div class="flex-ul">
-      <p><%= image_tag "icons8-manager-64.png", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
-      <p><%= image_tag "icons8-planner-64.png", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
-    </div>
-    <div class="div-link">
-      <% if prescription.draft? %>
-        <%= link_to edit_doctor_prescription_path(prescription) do %>
-          <button class="bn632-hover bn26">Finaliser</button>
+      <h2 class="titre-page">Ordonnances transmises</h2>
+
+      <div id="doctor-prescriptions">
+        <% @sent_prescriptions.sort.reverse!.each do |prescription|  %>
+        <div class="card-ordonance">
+          <% if prescription.draft? %>
+            <p>  <%= image_tag "icons8-treatment-64.png", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
+          <% else %>
+            <p> <%= image_tag "icons8-treatment-64.png", class: "avatar" %> Ordonnance émise</p>
+          <% end %>
+          <% if prescription.patient.photo.attached? %>
+            <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
+          <% else %>
+            <p><%= image_tag "https://www.dlsu.edu.ph/wp-content/uploads/2022/08/anonymous.png", class: "avatar-large" %>
+          <% end %>
+          <div class="flex-ul">
+            <p><%= image_tag "icons8-manager-64.png", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
+            <p><%= image_tag "icons8-planner-64.png", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
+          </div>
+          <div class="div-link">
+            <% if prescription.draft? %>
+              <%= link_to edit_doctor_prescription_path(prescription) do %>
+                <button class="bn632-hover bn26">Finaliser</button>
+              <% end %>
+            <% else %>
+              <%= link_to doctor_prescription_path(prescription) do %>
+                <button class="bn632-hover bn26">Consulter</button>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
         <% end %>
       <% else %>
         <%= link_to doctor_prescription_path(prescription) do %>
@@ -64,21 +89,23 @@
   <% end %>
 </div>
 
-
-
-<!-- Modal -->
-<div class="modal-global modal fade" id="UserChoiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Choisir un patient</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-footer modal-body">
-        <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
-          <%= f.input :patient_id, collection: Patient.simple_form_collection, input_html: {data: {controller: "tom-select"}}, class: "user-select" %>
-          <%= f.submit 'Commencer', class: "btn btn-primary text-white" %>
-        <% end %>
+  <!-- Modal -->
+  <div class="modal-global modal fade" id="UserChoiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Choisir un patient</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
+            <%= f.input :patient_id, label: false, collection: Patient.simple_form_collection, input_html: {data: {controller: "tom-select"}}, class: "user-select" %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit 'Commencer', class: "bn632-hover bn26" %>
+          <% end %>
+        </div>
+        </div>
       </div>
     </div>
   </div>

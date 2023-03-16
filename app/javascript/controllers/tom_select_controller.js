@@ -6,6 +6,7 @@ export default class extends Controller {
   connect() {
     new TomSelect(this.element, {
       create: true,
+      placeholder: "Sélectionner un patient...",
       sortField: {
         field: "text",
         direction: "asc"
