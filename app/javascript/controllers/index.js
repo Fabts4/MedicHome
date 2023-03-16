@@ -20,7 +20,7 @@ import TomSelectController from "./tom_select_controller"
 application.register("tom-select", TomSelectController)
 
 import TomSelect2Controller from "./tom_select_2_controller"
-application.register("tom-select-2", TomSelect2Controller)
+application.register("tom-select", TomSelect2Controller)
 
 import TotalController from "./total_controller"
 application.register("total", TotalController)
