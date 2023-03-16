@@ -6,70 +6,22 @@
     <% end%>
     <a class="bn632-hover bn26" data-bs-toggle="modal" data-bs-target="#UserChoiceModal">Ordonnance<%= image_tag "add_medoc_button.png" %></a>
   </div>
-    <h4 class="titre-page">Ordonnances à finaliser</h2>
+    <h4 class="titre-page"><%= @pending_prescriptions.count %> Ordonnances à finaliser</h2>
 
 
       <div id="doctor-prescriptions">
         <% @pending_prescriptions.sort.reverse!.each do |prescription|  %>
-        <div class="card-ordonance">
-          <% if prescription.draft? %>
-            <p>  <%= image_tag "icons8-treatment-64.png", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
-          <% else %>
-            <p> <%= image_tag "icons8-treatment-64.png", class: "avatar" %> Ordonnance émise</p>
-          <% end %>
-          <% if prescription.patient.photo.attached? %>
-            <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
-          <% end %>
-          <div class="flex-ul">
-            <p><%= image_tag "icons8-manager-64.png", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
-            <p><%= image_tag "icons8-planner-64.png", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
-          </div>
-          <div class="div-link">
-            <% if prescription.draft? %>
-              <%= link_to edit_doctor_prescription_path(prescription) do %>
-                <button class="bn632-hover bn26">Finaliser</button>
-              <% end %>
-            <% else %>
-              <%= link_to doctor_prescription_path(prescription) do %>
-                <button class="bn632-hover bn26">Consulter</button>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
+          <%= render "doctor/prescriptions/card-ordonance", prescription: prescription %>
         <% end %>
       </div>
 
-      <h2 class="titre-page">Ordonnances transmises</h2>
+      <h2 class="titre-page"><%= @sent_prescriptions.count %> Ordonnances transmises</h2>
 
       <div id="doctor-prescriptions">
         <% @sent_prescriptions.sort.reverse!.each do |prescription|  %>
-        <div class="card-ordonance">
-          <% if prescription.draft? %>
-            <p>  <%= image_tag "icons8-treatment-64.png", class: "avatar" %> <strong>Ordonnance à finaliser</strong> </p>
-          <% else %>
-            <p> <%= image_tag "icons8-treatment-64.png", class: "avatar" %> Ordonnance émise</p>
+          <%= link_to doctor_prescription_path(prescription) do %>
+            <%= render "doctor/prescriptions/card-ordonance", prescription: prescription %>
           <% end %>
-          <% if prescription.patient.photo.attached? %>
-            <p class="card-footer"><%= cl_image_tag prescription.patient.photo.key,:width=>80, :height=>80, class: "avatar-large" %></p>
-          <% else %>
-            <p><%= image_tag "https://www.dlsu.edu.ph/wp-content/uploads/2022/08/anonymous.png", class: "avatar-large" %>
-          <% end %>
-          <div class="flex-ul">
-            <p><%= image_tag "icons8-manager-64.png", class: "avatar" %> <%= prescription.patient.first_name %> <%= prescription.patient.last_name %></p>
-            <p><%= image_tag "icons8-planner-64.png", class: "avatar" %> <%= prescription.date.strftime('%d/%m/%Y') %></p>
-          </div>
-          <div class="div-link">
-            <% if prescription.draft? %>
-              <%= link_to edit_doctor_prescription_path(prescription) do %>
-                <button class="bn632-hover bn26">Finaliser</button>
-              <% end %>
-            <% else %>
-              <%= link_to doctor_prescription_path(prescription) do %>
-                <button class="bn632-hover bn26">Consulter</button>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
         <% end %>
       </div>
 
