@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="add-item"
 export default class extends Controller {
 
-  static targets = ["checkoutCart", "navbar"]
+  static targets = ["checkoutCart", "navbar", "cartIcon"]
 
   connect() {
     console.log()
@@ -23,6 +23,10 @@ export default class extends Controller {
       .then((data) => {
         this.checkoutCartTarget.outerHTML = data.html;
         this.navbarTarget.innerText = data.cartItemsCount;
+        this.cartIconTarget.style.color = 'red';
+        setTimeout(() => {
+          this.cartIconTarget.style.color = 'white';
+        }, 400);
       })
 
   }
