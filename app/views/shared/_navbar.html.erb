@@ -1,11 +1,8 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= "transparent" if action_name == "home" %>">
   <div class="container-fluid">
     <%= link_to doctor_home_path, class: "navbar-brand" do %>
       <%= image_tag "logo.png" %>
     <% end %>
-    <% if user_signed_in? %>
-    <div id="navba"class="nav-link text-white">Bienvenue <%= current_user.first_name%> <%= current_user.last_name%></div>
-    <% end%>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
