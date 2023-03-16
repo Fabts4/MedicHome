@@ -25,7 +25,9 @@
       <div class="modal-footer modal-body">
         <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
           <%= f.input :patient_id, collection: Patient.simple_form_collection, input_html: {data: {controller: "tom-select"}}, class: "user-select" %>
+          <div id="bn-flex">
           <%= f.submit 'Commencer', class: "bn632-hover bn26" %>
+          </div>
         <% end %>
       </div>
     </div>
