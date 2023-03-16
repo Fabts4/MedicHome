@@ -6,7 +6,7 @@
     <% end%>
     <a class="bn632-hover bn26" data-bs-toggle="modal" data-bs-target="#UserChoiceModal">Ordonnance<%= image_tag "add_medoc_button.png" %></a>
   </div>
-    <h4 class="titre-page"> <%= @pending_prescriptions.count %> <%= "ordonnance".pluralize(@pending_prescriptions.count) %> à finaliser</h2>
+    <h4 class="titre-page"> <span style="color:black"><%= @pending_prescriptions.count %></span>  <%= "ordonnance".pluralize(@pending_prescriptions.count) %> à finaliser</h2>
 
 
       <div id="doctor-prescriptions">
@@ -15,7 +15,7 @@
         <% end %>
       </div>
 
-      <h2 class="titre-page"><%= @sent_prescriptions.count %> ordonnances transmises</h2>
+      <h2 class="titre-page"><span style="color:black"><%= @sent_prescriptions.count %></span> ordonnances transmises</h2>
 
 
   <!-- Modal -->
