@@ -50,7 +50,8 @@
 
   <% controller.controller_name %>
 
-  <body id="<%= controller.controller_name %>-<%= controller.action_name %>">
+  <body id="<%= controller.controller_name %>-<%= controller.action_name %>" data-controller="<%= "add-item" if controller_name == "pharmacies" && action_name == "show" %>">
+
     <% if user_signed_in? %>
       <% if current_user.doctor? %>
         <%= render "shared/navbar" %>
@@ -70,4 +71,3 @@
       <% end %>
     <% end  %>
   </body>
-</html>

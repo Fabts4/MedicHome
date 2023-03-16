@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="add-item"
 export default class extends Controller {
 
-  static targets = ["checkoutCart"]
+  static targets = ["checkoutCart", "navbar"]
 
   connect() {
     console.log()
@@ -11,7 +11,6 @@ export default class extends Controller {
 
   create(event) {
     event.preventDefault()
-    console.log();
 
     fetch(event.currentTarget.href, {
       method: "POST",
@@ -23,6 +22,7 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
         this.checkoutCartTarget.outerHTML = data.html;
+        this.navbarTarget.innerText = data.cartItemsCount;
       })
 
   }
