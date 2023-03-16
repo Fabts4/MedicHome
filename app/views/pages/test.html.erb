@@ -1,0 +1,32 @@
+<div class="banner-img">
+  <div class="parent-flexbox">
+      <button class= "boutton-carré" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#UserChoiceModal">
+          <h2>Nouvelle Ordonnance</h2>
+          <%= image_tag "prescription.png", alt: "icone de medoc", class:"image-bouton-carré" %>
+      </button>
+      <%= link_to  doctor_prescriptions_path do %>
+      <button class= "boutton-carré">
+          <h2>Rechercher une ordonnance</h2>
+          <%= image_tag "search-icon.png", alt: "icone de TRJSsearch", class:"image-bouton-carré" %>
+      </button>
+      <% end %>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-global modal fade" id="UserChoiceModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Choisir un patient</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer modal-body">
+        <%= simple_form_for(@prescription, url: doctor_prescriptions_path, method: 'POST') do |f| %>
+          <%= f.input :patient_id, collection: Patient.simple_form_collection, input_html: {data: {controller: "tom-select"}}, class: "user-select" %>
+          <%= f.submit 'Commencer', class: "btn btn-primary text-white" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

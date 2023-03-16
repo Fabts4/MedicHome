@@ -1,0 +1,39 @@
+<div class="checkout-card" data-add-item-target="checkoutCart">
+  <div class="checkout-section">
+    <h3 class= "pharmaname">Ordonnance du Dr <%= prescription.doctor.last_name %></h3>
+    <% drugs.each do |drug| %>
+      <p> <%= image_tag "icons8-pill-64.png", alt: "icone de medoc", class: "drugicon" %><%= drug.item.name.capitalize %></p>
+    <% end %>
+  </div>
+  <hr>
+  <div class="checkout-section">
+    <h3 class= "pharmaname">Parapharmacie</h3>
+    <% cart_items.each do |cart_item|%>
+      <li class="cart-item">
+        <div class="cart-item-info">
+          <%= cart_item.quantity %> x <%= cart_item.item.name %> - <%= cart_item.quantity * cart_item.item.price %> €
+        </div>
+        <div class="cart-item-delete">
+          <%= link_to cart_item_path(cart_item), data: { turbo_method: :delete } do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end  %>
+        </div>
+      </li>
+    <% end %>
+  </div>
+  <hr>
+  <div class="checkout-section section3" data-controller="total">
+    <div class="delivery-option">
+      <input type="checkbox" id="delivery-checkbox" name="delivery-checkbox" value="yes" data-action="change->total#updateTotal" data-total-target ="checkbox">
+      <label for="delivery-checkbox">En livraison ? (5€)</label>
+    </div>
+    <h3>Total: <span data-total-target="finalPrice"><%= final_price %></span> € </h3>
+      <%= link_to cart_path(cart, price: final_price, pharmacy: pharmacy), data: {turbo_method: :patch} do %>
+      <button class="total total-button" data-bs-toggle = "modal" data-bs-target = "#confirmation">
+        Commander
+      </button>
+      <% end %>
+
+
+  </div>
+</div>
