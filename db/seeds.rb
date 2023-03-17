@@ -3,7 +3,7 @@ require "open-uri"
 
 filepath = "storage/drugsv2.csv"
 
-# Prescription.destroy_all
+Prescription.destroy_all
 Doctor.destroy_all
 Patient.destroy_all
 Pharmacy.destroy_all
@@ -32,7 +32,7 @@ edouard.photo.attach(io: edouard_photo, filename: "edouard.jpg", content_type: "
 georges_photo = URI.open('https://www.gala.fr/imgre/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fgal.2Fvar.2Fgal.2Fstorage.2Fimages.2Fmedia.2Fmultiupload_du_15_octobre_2011.2Fmoustaki.2F1774975-1-fre-FR.2Fmoustaki.2Ejpg/1504x846/quality/80/georges-moustaki-ne-peut-plus-chanter.jpg')
 georges.photo.attach(io: georges_photo, filename: "Georges.jpg", content_type: "image/jpg")
 
-youssef_photo = photo = URI.open('app/assets/images/photos-seed/youssef.JPG')
+youssef_photo = photo = URI.open('app/assets/images/photos-seed/youssef.jpg')
 youssef.photo.attach(io: youssef_photo, filename: "youssef.jpg", content_type: "image/jpg")
 
 malo_photo = photo = URI.open('app/assets/images/photos-seed/malo.jpg')
@@ -70,20 +70,19 @@ Patient.create!(email: 'fexza@gmail.com', password: 'azerty', first_name: 'Sarah
 Patient.create!(email: 'zzxdfgvt@gmail.com', password: 'azerty', first_name: 'Gwenola', last_name: 'de Lacroix Vaubois', address: '76 rue de Vaugirard', ssn: '17723066749696', mutuelle_name:'Mutuelle', mutuelle_number: '0000572942', rpps: '', doctor: false )
 Patient.create!(email: 'rghnji@gmail.com', password: 'azerty', first_name: 'Julie', last_name: 'Delarue', address: '76 rue de Vaugirard', ssn: '17723066749696', mutuelle_name:'Mutuelle', mutuelle_number: '0000572942', rpps: '', doctor: false )
 
-prescription_1 = Prescription.create!(date: '06/03/2019', status: 0, doctor_id: doc_knock.id, patient_id: youssef.id)
-prescription_2 = Prescription.create!(date: '14/06/2019', status: 0, doctor_id: doc_knock.id, patient_id: emmanuelle.id)
-prescription_3 = Prescription.create!(date: '30/01/2020', status: 2, doctor_id: doc_knock.id, patient_id: malo.id)
-prescription_4 = Prescription.create!(date: '22/08/2020', status: 2, doctor_id: doc_knock.id, patient_id: hamza.id)
-prescription_5 = Prescription.create!(date: '28/02/2021', status: 2, doctor_id: doc_knock.id, patient_id: adalbert.id)
-prescription_6 = Prescription.create!(date: '12/07/2021', status: 2, doctor_id: doc_knock.id, patient_id: georges.id)
-prescription_7 = Prescription.create!(date: '14/07/2021', status: 2, doctor_id: doc_knock.id, patient_id: edouard.id)
-prescription_8 = Prescription.create!(date: '31/05/2022', status: 2, doctor_id: doc_knock.id, patient_id: youssef.id)
-prescription_9 = Prescription.create!(date: '30/06/2022', status: 2, doctor_id: doc_knock.id, patient_id: georges.id)
-prescription_10 = Prescription.create!(date: '15/07/2022', status: 2, doctor_id: raoult.id, patient_id: edouard.id)
-prescription_11 = Prescription.create!(date: '25/01/2023', status: 2, doctor_id: raoult.id, patient_id: edouard.id)
-prescription_12 = Prescription.create!(date: '28/02/2023', status: 2, doctor_id: raoult.id, patient_id: edouard.id)
-prescription_13 = Prescription.create!(date: '02/03/2023', status: 2, doctor_id: raoult.id, patient_id: edouard.id)
-prescription_14 = Prescription.create!(date: '05/03/2023', status: 2, doctor_id: raoult.id, patient_id: edouard.id)
+prescription_1 = Prescription.create!(date: '15/03/2023', status: 0, doctor_id: doc_knock.id, patient_id: youssef.id)
+prescription_2 = Prescription.create!(date: '11/03/2023', status: 0, doctor_id: doc_knock.id, patient_id: emmanuelle.id)
+prescription_3 = Prescription.create!(date: '12/03/2023', status: 2, doctor_id: doc_knock.id, patient_id: malo.id)
+prescription_4 = Prescription.create!(date: '12/03/2023', status: 2, doctor_id: doc_knock.id, patient_id: hamza.id)
+prescription_5 = Prescription.create!(date: '13/03/2023', status: 2, doctor_id: doc_knock.id, patient_id: adalbert.id)
+prescription_6 = Prescription.create!(date: '13/03/2023', status: 2, doctor_id: doc_knock.id, patient_id: georges.id)
+prescription_8 = Prescription.create!(date: '14/03/2023', status: 2, doctor_id: doc_knock.id, patient_id: youssef.id)
+prescription_9 = Prescription.create!(date: '14/03/2023', status: 2, doctor_id: doc_knock.id, patient_id: georges.id)
+prescription_10 = Prescription.create!(date: '15/03/2023', status: 2, doctor_id: raoult.id, patient_id: edouard.id)
+prescription_11 = Prescription.create!(date: '15/03/2023', status: 2, doctor_id: raoult.id, patient_id: edouard.id)
+prescription_12 = Prescription.create!(date: '16/03/2023', status: 2, doctor_id: raoult.id, patient_id: edouard.id)
+prescription_13 = Prescription.create!(date: '16/03/2023', status: 2, doctor_id: raoult.id, patient_id: edouard.id)
+prescription_14 = Prescription.create!(date: '16/03/2023', status: 2, doctor_id: raoult.id, patient_id: edouard.id)
 
 pharmacy_2 = Pharmacy.create!(name: 'Pharmatop', address: '48 boulevard Raspail, Paris ')
 pharmacy_5 = Pharmacy.create!(name: 'Pharmacorp', address: '67 boulevard Saint-Germain, Paris')
@@ -97,11 +96,6 @@ Pharmacy.create!(name: "Pharmacie Couronnes", address: "43 Bd de Belleville, 750
 Pharmacy.create!(name: "Pharmacie Rossi", address: "152 Rue Oberkampf, 75011 Paris")
 Pharmacy.create!(name: "Pharmacie Azencott", address: "43 Rue des Maronites, 75020 Paris")
 Pharmacy.create!(name: "Pharmacie Assoun", address: "53 Av. de la République, 75011 Paris")
-Pharmacy.create!(name: "Pharmacie Gardette", address: "38 Ave Parmentier, 75011 Paris")
-Pharmacy.create!(name: "Pharmacie du 58", address: "58 Rue Oberkampf, 75011 Paris")
-Pharmacy.create!(name: "Pharmacie Sebban Alain", address: "84 Bd Richard-Lenoir, 75011 Paris")
-Pharmacy.create!(name: "Pharmacie Delalande Le Dantec", address: "130 Ave Parmentier, 75011 Paris")
-Pharmacy.create!(name: "Pharmacie Sabaa", address: "24 Rue Oberkampf, 75011 Paris")
 Pharmacy.create!(name: "Pharmacie Saint Martin", address: "28 Rue du Faubourg du Temple, 75011 Paris")
 Pharmacy.create!(name: "Pharmacie Voltaire", address: "29 Bd Voltaire, 75011 Paris")
 Pharmacy.create!(name: "Pharmacie du Calvaire", address: "2 Bd des Filles du Calvaire, 75011 Paris")
