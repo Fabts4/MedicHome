@@ -1,3 +1,4 @@
+
 <div ><span class = "ref">#<%= prescription.patient.first_name.chars.first %><%= prescription.patient.last_name.chars.first %><%= prescription.doctor.first_name.chars.first %><%= prescription.doctor.last_name.chars.first %><%= prescription.patient.id %><%= prescription.doctor.id %><%= prescription.id %></span>
   <div class="card-ordonance">
     <div class="feature patient-name">
@@ -14,9 +15,6 @@
     </div>
     <% if prescription.draft? %>
       <div class="div-link">
-        <%= link_to edit_doctor_prescription_path(prescription) do %>
-          <button class="bn632-hover bn26">Finaliser</button>
-        <% end %>
       </div>
     <% end %>
   </div>

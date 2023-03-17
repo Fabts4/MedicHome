@@ -18,13 +18,14 @@ p:not(:last-child) {
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
   min-width: 340px;
   backdrop-filter: blur(15px);
+
   p {
     text-align: center;
   }
   .feature {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     .avatar-large {
       width: 40px;
       height: 40px;
