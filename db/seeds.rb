@@ -8,7 +8,7 @@ Doctor.destroy_all
 Patient.destroy_all
 Pharmacy.destroy_all
 Cart.destroy_all
-# Item.destroy_all
+Item.where(drug: false).destroy_all
 
 # CSV.foreach(filepath, headers: :first_row) do |row|
 #   Item.create(name: row[0], desc: row[1], administration: row[2], price: 0)
