@@ -14,8 +14,11 @@
     <%= link_to patient_prescriptions_path do %>
       <div class="button">
         <% if controller_name == "pharmacies" && action_name == "show" %>
+          <div class="cart-icon-container">
           <i data-add-item-target="cartIcon" class="fa-solid fa-cart-arrow-down"></i>
-          <p><span data-add-item-target="navbar"><%= @cart.items.count %></span> <%= "article".pluralize(@cart.items.count) %></p>
+          <span data-add-item-target="pastille" class= "<%= "d-none"if @cart.items.count == 0 %>"  ><%= @cart.items.count %></span>
+          </div>
+          <p><span data-add-item-target="navbar">Mon panier</span></p>
         <% else %>
           <i class="fa-solid fa-user-doctor"></i>
           <p>Mes docteurs</p>
