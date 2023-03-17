@@ -11,7 +11,9 @@
 
       <div id="doctor-prescriptions">
         <% @pending_prescriptions.sort.reverse!.each do |prescription|  %>
-          <%= render "doctor/prescriptions/card-ordonance", prescription: prescription %>
+          <%= link_to edit_doctor_prescription_path(prescription) do %>
+            <%= render "doctor/prescriptions/card-ordonance", prescription: prescription %>
+          <% end %>
         <% end %>
       </div>
 
