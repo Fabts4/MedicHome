@@ -32,7 +32,7 @@ edouard.photo.attach(io: edouard_photo, filename: "edouard.jpg", content_type: "
 georges_photo = URI.open('https://www.gala.fr/imgre/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fgal.2Fvar.2Fgal.2Fstorage.2Fimages.2Fmedia.2Fmultiupload_du_15_octobre_2011.2Fmoustaki.2F1774975-1-fre-FR.2Fmoustaki.2Ejpg/1504x846/quality/80/georges-moustaki-ne-peut-plus-chanter.jpg')
 georges.photo.attach(io: georges_photo, filename: "Georges.jpg", content_type: "image/jpg")
 
-youssef_photo = photo = URI.open('app/assets/images/photos-seed/youssef.JPG')
+youssef_photo = photo = URI.open('app/assets/images/photos-seed/youssef.jpg')
 youssef.photo.attach(io: youssef_photo, filename: "youssef.jpg", content_type: "image/jpg")
 
 malo_photo = photo = URI.open('app/assets/images/photos-seed/malo.jpg')
